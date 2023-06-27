@@ -34,6 +34,10 @@ public class ResHolder : BinBeha
 		if (this.resCurrent > this.resMax) this.resCurrent = this.resMax;
 		return this.resCurrent;
 	}
+	public virtual float Deduct(float number)
+	{
+		return this.Add(-number);
+	}
 
 	public virtual float Current()
 	{

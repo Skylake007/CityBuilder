@@ -5,7 +5,7 @@ using UnityEngine;
 public class Warehouse : BinBeha
 {
 	[Header("Wearhouse")]
-	public BuildingType buildingType;
+	public BuildingType buildingType = BuildingType.workStation;
 	[SerializeField] protected bool isFull = false;
 	[SerializeField] protected List<ResHolder> resHolders;
 
@@ -36,7 +36,7 @@ public class Warehouse : BinBeha
 		Debug.Log(transform.name + ": LoadHolders");
 	}
 
-	public virtual ResHolder GetHolder(ResourceName name)
+	public virtual ResHolder GetResource(ResourceName name)
 	{
 		return this.resHolders.Find((holder) => holder.Name() == name);
 	}
@@ -51,8 +51,15 @@ public class Warehouse : BinBeha
 
 	public virtual ResHolder AddResource(ResourceName resourceName, float number)
 	{
-		ResHolder res = this.GetHolder(resourceName);
+		ResHolder res = this.GetResource(resourceName);
 		res.Add(number);
+		return res;
+	}
+
+	public virtual ResHolder RemoveResource(ResourceName resourceName, float number)
+	{
+		ResHolder res = this.GetResource(resourceName);
+		res.Deduct(number);
 		return res;
 	}
 

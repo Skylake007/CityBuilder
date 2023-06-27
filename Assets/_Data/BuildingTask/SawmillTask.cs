@@ -6,6 +6,8 @@ public class SawmillTask : BuildingTask
 {
 	[Header("Sawmill Task")]
 	[SerializeField] protected Transform workingPoint;
+	[SerializeField] protected int logwoodCount = 0;
+	[SerializeField] protected float blankReceive = 0f;
 	//[SerializeField] protected float workingSpeed = 7;
 
 
@@ -49,10 +51,22 @@ public class SawmillTask : BuildingTask
 
 	protected virtual void MakingResource(WorkerCtrl workerCtrl)
 	{
-		workerCtrl.workerMovement.isWorking = true;
-		workerCtrl.workerMovement.workingType = WorkingType.sawing;
+		if (workerCtrl.workerMovement.isWorking) return;
+		StartCoroutine(Sawing(workerCtrl));
 	}
 
+	IEnumerator Sawing(WorkerCtrl workerCtrl)
+	{
+		workerCtrl.workerMovement.isWorking = true;
+		workerCtrl.workerMovement.workingType = WorkingType.sawing;
+		yield return new WaitForSeconds(this.workingSpeed);
+
+		this.buildingCtrl.warehouse.RemoveResource(ResourceName.logwood, this.logwoodCount);
+		this.buildingCtrl.warehouse.AddResource(ResourceName.blank, this.blankReceive);
+
+		workerCtrl.workerMovement.isWorking = false;
+		workerCtrl.workerTasks.TaskCurrentDone();
+	}
 
 	protected virtual void Planning(WorkerCtrl workerCtrl)
 	{
