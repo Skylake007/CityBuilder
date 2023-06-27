@@ -26,7 +26,7 @@ public class Well : ResGenerator
 
 	protected virtual void SetLimit()
 	{
-		ResHolder resourceHolder = this.GetHolder(ResourceName.water);
+		ResHolder resourceHolder = this.GetResource(ResourceName.water);
 		resourceHolder.SetLimit(7);
 	}
 }

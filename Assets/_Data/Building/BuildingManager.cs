@@ -13,6 +13,7 @@ public class BuildingManager : BinBeha
 		if (BuildingManager.instance != null) Debug.LogError("Only 1 BuildingManager allow exist");
 		BuildingManager.instance = this;
 	}
+
 	protected override void LoadComponents()
 	{
 		base.LoadComponents();
@@ -32,9 +33,8 @@ public class BuildingManager : BinBeha
 		Debug.LogWarning(transform.name + ": LoadBuildingCtrls", gameObject);
 	}
 
-	public virtual BuildingCtrl FindBuilding(Transform worker, BuildingType buildingType)
+	public virtual BuildingCtrl FindBuilding(BuildingType buildingType)
 	{
-	//To do
 		BuildingCtrl buildingCtrl;
 		for (int i = 0; i < this.buildingCtrls.Count; i++)
 		{
@@ -42,9 +42,13 @@ public class BuildingManager : BinBeha
 			if (!buildingCtrl.workers.IsNeedWorker()) continue;
 			if (buildingCtrl.warehouse.buildingType != buildingType) continue;
 
-			buildingCtrl.workers.AddWorker(worker);
 			return buildingCtrl;
 		}
 		return null;
+	}
+
+	public virtual List<BuildingCtrl> BuildingCtrls()
+	{
+		return this.buildingCtrls;
 	}
 }

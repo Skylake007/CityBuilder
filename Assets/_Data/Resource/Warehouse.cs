@@ -71,4 +71,14 @@ public class Warehouse : BinBeha
 		}
 		return true;
 	}
+
+	public virtual ResHolder ResNeedToMove()
+	{ 
+		return null;
+	}
+
+	public virtual ResHolder IsNeedRes(Resource res)
+	{
+		return null;
+	}
 }

@@ -72,6 +72,7 @@ public class SawmillTask : BuildingTask
 	{
 		if (!this.IsStoreMax() && this.HasLogwood())
 		{
+			workerCtrl.workerTasks.TaskAdd(TaskType.goToWorkStation);
 			workerCtrl.workerTasks.TaskAdd(TaskType.makingResource);
 			workerCtrl.workerTasks.TaskAdd(TaskType.gotoWorkPoint);
 		}

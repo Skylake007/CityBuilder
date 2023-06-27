@@ -41,7 +41,7 @@ public class WorkerTask : BinBeha
 	{
 		if (this.GetBuilding() != null) return;
 
-		BuildingCtrl buildingCtrl = BuildingManager.instance.FindBuilding(transform, this.GetBuildingType());
+		BuildingCtrl buildingCtrl = BuildingManager.instance.FindBuilding(this.GetBuildingType());
 		if (buildingCtrl == null) return;
 		this.AssignBuilding(buildingCtrl);
 	}

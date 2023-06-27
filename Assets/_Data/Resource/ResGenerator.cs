@@ -26,7 +26,7 @@ public class ResGenerator : Warehouse
 		foreach (Resource res in this.resCreate)
 		{
 			//ResourceHolder resourceHolder = this.resourceHolders.Find((holder) => holder.Name() == res.name);
-			ResHolder resourceHolder = this.GetHolder(res.name);
+			ResHolder resourceHolder = this.GetResource(res.name);
 			resourceHolder.Add(res.number);
 		}
 	}

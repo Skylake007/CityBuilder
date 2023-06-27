@@ -25,7 +25,7 @@ public class Tree : ResGenerator
 
 	protected virtual void SetLimit()
 	{
-		ResHolder resourceHolder = this.GetHolder(ResourceName.logwood);
+		ResHolder resourceHolder = this.GetResource(ResourceName.logwood);
 		resourceHolder.SetLimit(1);
 	}
 }
