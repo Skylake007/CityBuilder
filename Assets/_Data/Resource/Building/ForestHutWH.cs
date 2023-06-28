@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class ForestHutWH : Warehouse
-//ForestHutWH
 {
 	public override ResHolder ResNeedToMove()
 	{

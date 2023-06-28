@@ -127,7 +127,6 @@ GameObject:
   - component: {fileID: 3518630938255790697}
   - component: {fileID: 1619475307664646402}
   - component: {fileID: 1080029212629826435}
-  - component: {fileID: 5701451918857087629}
   - component: {fileID: 5977128433679072778}
   m_Layer: 0
   m_Name: Tree_2
@@ -189,12 +188,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buildingType: 0
+  isFull: 0
   resHolders: []
   resCreate: []
   resRequire: []
   canCreate: 1
   createTimer: 0
-  createDelay: 2
+  createDelay: 10
 --- !u!114 &1080029212629826435
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -207,34 +207,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53849402440c2e249b667c216bcf51ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levels: []
+  levels:
+  - {fileID: 6877350576970983355}
+  - {fileID: 7627713071582219536}
+  - {fileID: 2488830481048854797}
+  - {fileID: 223998380228579055}
+  - {fileID: 7093314391445472290}
   currentLevel: 0
   isMaxLevel: 0
   tree: {fileID: 1619475307664646402}
   treeTimer: 0
-  treeDelay: 50
---- !u!114 &5701451918857087629
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9176410908317736447}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: caff68dfbb2928049a5502b28a1bc5fe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  buildingType: 0
-  resHolders:
-  - {fileID: 8896942133046530017}
-  resCreate:
-  - name: 1001
-    number: 1
-  resRequire: []
-  canCreate: 1
-  createTimer: 0
-  createDelay: 2
+  treeDelay: 0.6666667
 --- !u!114 &5977128433679072778
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -648,7 +631,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2807449429036958551, guid: f0c16f0ea935ea64297ca1d4d55d9746, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

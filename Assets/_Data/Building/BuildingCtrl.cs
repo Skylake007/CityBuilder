@@ -5,8 +5,8 @@ using UnityEngine;
 public class BuildingCtrl : BinBeha
 {
 	public Transform door;
-	public Warehouse warehouse;
 	public Workers workers;
+	public Warehouse warehouse;
 	public BuildingTask buildingTask;
 
 	protected override void LoadComponents()

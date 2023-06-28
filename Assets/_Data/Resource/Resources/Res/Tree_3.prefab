@@ -127,7 +127,6 @@ GameObject:
   - component: {fileID: 3518630938255790697}
   - component: {fileID: 1720129041356233977}
   - component: {fileID: 1080029212629826435}
-  - component: {fileID: 5701451918857087629}
   - component: {fileID: 8836576374065165810}
   m_Layer: 0
   m_Name: Tree_3
@@ -189,6 +188,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buildingType: 0
+  isFull: 0
   resHolders:
   - {fileID: 8896942133046530017}
   resCreate:
@@ -197,7 +197,7 @@ MonoBehaviour:
   resRequire: []
   canCreate: 1
   createTimer: 0
-  createDelay: 2
+  createDelay: 10
 --- !u!114 &1080029212629826435
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -216,28 +216,6 @@ MonoBehaviour:
   tree: {fileID: 1720129041356233977}
   treeTimer: 0
   treeDelay: 50
---- !u!114 &5701451918857087629
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9176410908317736447}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: caff68dfbb2928049a5502b28a1bc5fe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  buildingType: 0
-  resHolders:
-  - {fileID: 8896942133046530017}
-  resCreate:
-  - name: 1001
-    number: 1
-  resRequire: []
-  canCreate: 1
-  createTimer: 0
-  createDelay: 2
 --- !u!114 &8836576374065165810
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -17,7 +17,7 @@ public enum TaskType
 
     bringResourceBack = 1000,
     makingResource = 1001,
-    gotoWorkPoint = 1002,
+    gotoWorkingPoint = 1002,
     getResNeedToMove = 1003,
     //Smith
 }

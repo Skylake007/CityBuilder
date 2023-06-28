@@ -236,7 +236,7 @@ CapsuleCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 3.1
   m_Height: 8.63
@@ -254,7 +254,7 @@ NavMeshObstacle:
   m_Shape: 0
   m_Extents: {x: 2, y: 1, z: 2}
   m_MoveThreshold: 0.1
-  m_Carve: 0
+  m_Carve: 1
   m_CarveOnlyStationary: 1
   m_Center: {x: 0, y: 0, z: 0}
   m_TimeToStationary: 0.5
@@ -271,8 +271,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   door: {fileID: 857888243956614178}
-  warehouse: {fileID: 271245001073931594}
   workers: {fileID: 852627514366503351}
+  warehouse: {fileID: 271245001073931594}
   buildingTask: {fileID: 3483824330689841525}
 --- !u!114 &852627514366503351
 MonoBehaviour:
@@ -286,7 +286,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fad3cbc032adf2042bc9fda2b103bc1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxWorker: 5
+  maxWorker: 3
   workers: []
 --- !u!114 &271245001073931594
 MonoBehaviour:
@@ -301,6 +301,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buildingType: 1
+  isFull: 0
   resHolders:
   - {fileID: 0}
 --- !u!114 &3483824330689841525
@@ -323,11 +324,11 @@ MonoBehaviour:
   treeMax: 7
   treeRange: 27
   treeDistance: 7
-  storeMax: 7
-  storeCurrent: 0
-  chopSpeed: 7
-  treeRemoveSpeed: 3
-  treePrefabs: []
+  treeRemoveSpeed: 16
+  treePrefabs:
+  - {fileID: 9176410908317736447, guid: 2c9a8d05812b98d4c862895e7e3650ef, type: 3}
+  - {fileID: 9176410908317736447, guid: 20c064839206ec04fa31cdec99336d11, type: 3}
+  - {fileID: 9176410908317736447, guid: 06709220ff542c0439e015e28ca4d5fe, type: 3}
   trees: []
 --- !u!1 &8242425657225242510
 GameObject:
@@ -374,8 +375,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   resName: 1001
-  resCurrent: 0
-  resMax: Infinity
+  resCurrent: 7
+  resMax: 7
 --- !u!1 &8574463044324409520
 GameObject:
   m_ObjectHideFlags: 0

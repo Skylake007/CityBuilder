@@ -4,24 +4,11 @@ using UnityEngine;
 
 public class WarehouseTask : BuildingTask
 {
-	[Header("Sawmill Task")]
-	[SerializeField] protected Transform workingPoint;
-	[SerializeField] protected int logwoodCount = 0;
-	[SerializeField] protected float blankReceive = 0f;
-	//[SerializeField] protected float workingSpeed = 7;
-
-
+	//[Header("WareHouse")]
+	
 	protected override void LoadComponents()
 	{
 		base.LoadComponents();
-		this.LoadWorkingPoint();
-	}
-
-	protected virtual void LoadWorkingPoint()
-	{
-		if (this.workingPoint != null) return;
-		this.workingPoint = transform.Find("WorkingPoint");
-		Debug.Log(transform.name + " LoadObject", gameObject);
 	}
 
 	public override void DoingTask(WorkerCtrl workerCtrl)
@@ -32,7 +19,7 @@ public class WarehouseTask : BuildingTask
 				this.GoGetResNeedToMove(workerCtrl);
 				break;
 			case TaskType.bringResourceBack:
-			this.BringResourceBack(workerCtrl);
+				this.BringResourceBack(workerCtrl);
 				break;
 			case TaskType.goToWorkStation:
 				this.BackToWorkStation(workerCtrl);
@@ -43,35 +30,11 @@ public class WarehouseTask : BuildingTask
 		}
 	}
 
-	protected virtual void GotoWorkingPoint(WorkerCtrl workerCtrl)
-	{
-		WorkerTasks workerTasks = workerCtrl.workerTasks;
-		if (workerTasks.inHouse) workerTasks.taskWorking.GoOutBuilding();
-	}
-
-	protected virtual void MakingResource(WorkerCtrl workerCtrl)
-	{
-		if (workerCtrl.workerMovement.isWorking) return;
-		StartCoroutine(Sawing(workerCtrl));
-	}
-
-	IEnumerator Sawing(WorkerCtrl workerCtrl)
-	{
-		workerCtrl.workerMovement.isWorking = true;
-		workerCtrl.workerMovement.workingType = WorkingType.sawing;
-		yield return new WaitForSeconds(this.workingSpeed);
-
-		this.buildingCtrl.warehouse.RemoveResource(ResourceName.logwood, this.logwoodCount);
-		this.buildingCtrl.warehouse.AddResource(ResourceName.blank, this.blankReceive);
-
-		workerCtrl.workerMovement.isWorking = false;
-		workerCtrl.workerTasks.TaskCurrentDone();
-	}
-
 	protected virtual void Planning(WorkerCtrl workerCtrl)
 	{
 		BuildingCtrl buildingCtrl = this.GetWorkStationHasResNeedToMove();
-		if (buildingCtrl != null) {
+		if (buildingCtrl != null)
+		{
 			workerCtrl.workerTasks.taskBuildingCtrl = buildingCtrl;
 			workerCtrl.workerMovement.SetTarget(null);
 			workerCtrl.workerTasks.TaskAdd(TaskType.getResNeedToMove);
@@ -91,7 +54,9 @@ public class WarehouseTask : BuildingTask
 			this.DoneGetResNeedToMove(workerCtrl);
 			return;
 		}
+
 		if (workerCtrl.workerMovement.GetTarget() == null) workerCtrl.workerMovement.SetTarget(taskBuildingCtrl.door);
+		
 		if (!workerCtrl.workerMovement.IsCloseToTarget()) return;
 
 		float count = 1;
@@ -110,29 +75,6 @@ public class WarehouseTask : BuildingTask
 		workerCtrl.workerTasks.TaskCurrentDone();
 		workerCtrl.workerTasks.taskBuildingCtrl = null;
 		workerCtrl.workerMovement.SetTarget(null);
-	}
-
-	protected virtual void BringResourceBack(WorkerCtrl workerCtrl)
-	{
-		WorkerTasks workerTasks = workerCtrl.workerTasks;
-		if (workerTasks.inHouse) workerTasks.taskWorking.GoOutBuilding();
-
-		BuildingCtrl taskBuildingCtrl = workerTasks.taskBuildingCtrl;
-		if (workerCtrl.workerMovement.GetTarget() == null) workerCtrl.workerMovement.SetTarget(taskBuildingCtrl.door);
-
-		if (!workerCtrl.workerMovement.IsCloseToTarget()) return;
-
-		workerCtrl.workerMovement.SetTarget(null);
-		workerTasks.taskBuildingCtrl = null;
-		workerTasks.TaskCurrentDone();
-
-		Resource res = workerCtrl.resCarrier.TakeFirst();
-		taskBuildingCtrl.warehouse.AddResource(res.name, res.number);
-
-		ResHolder resHolder = taskBuildingCtrl.warehouse.ResNeedToMove();
-		if (resHolder == null) return;
-		workerTasks.taskBuildingCtrl = taskBuildingCtrl;
-		workerTasks.TaskAdd(TaskType.getResNeedToMove);
 	}
 
 	protected virtual BuildingCtrl GetWorkStationHasResNeedToMove()
@@ -159,9 +101,26 @@ public class WarehouseTask : BuildingTask
 		return this.buildingCtrl;
 	}
 
-	protected virtual bool IsStoreMax()
-	{ return false; }
+	protected virtual void BringResourceBack(WorkerCtrl workerCtrl)
+	{
+		WorkerTasks workerTasks = workerCtrl.workerTasks;
+		if (workerTasks.inHouse) workerTasks.taskWorking.GoOutBuilding();
 
-	protected virtual bool HasLogwood()
-	{ return true; }
+		BuildingCtrl taskBuildingCtrl = workerTasks.taskBuildingCtrl;
+		if (workerCtrl.workerMovement.GetTarget() == null) workerCtrl.workerMovement.SetTarget(taskBuildingCtrl.door);
+
+		if (!workerCtrl.workerMovement.IsCloseToTarget()) return;
+
+		workerCtrl.workerMovement.SetTarget(null);
+		workerTasks.taskBuildingCtrl = null;
+		workerTasks.TaskCurrentDone();
+
+		Resource res = workerCtrl.resCarrier.TakeFirst();
+		taskBuildingCtrl.warehouse.AddResource(res.name, res.number);
+
+		ResHolder resHolder = taskBuildingCtrl.warehouse.ResNeedToMove();
+		if (resHolder == null) return;
+		workerTasks.taskBuildingCtrl = taskBuildingCtrl;
+		workerTasks.TaskAdd(TaskType.getResNeedToMove);
+	}
 }

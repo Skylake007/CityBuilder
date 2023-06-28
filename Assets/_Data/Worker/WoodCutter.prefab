@@ -16,7 +16,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &7114763035179338134
 Transform:
   m_ObjectHideFlags: 0
@@ -162,16 +162,16 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 605895145223104982}
+  - component: {fileID: 2209468687398005955}
   - component: {fileID: 2816759508749729913}
   - component: {fileID: 8000376906715016024}
-  - component: {fileID: 2209468687398005955}
   - component: {fileID: 8025129761938865177}
   - component: {fileID: 2146258111439368745}
   - component: {fileID: 4493195563531541978}
   m_Layer: 0
   m_Name: WoodCutter
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 8418204508859773708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -192,44 +192,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2816759508749729913
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2237924620720955493}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: af55f4000e1588540ae6f130e0697873, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  workerBuildings: {fileID: 8025129761938865177}
-  workerMovement: {fileID: 8000376906715016024}
-  workerTasks: {fileID: 2146258111439368745}
-  animator: {fileID: 6191459729956424610}
-  workerModel: {fileID: 219646167536734680}
-  navMeshAgent: {fileID: 2209468687398005955}
-  resCarrier: {fileID: 0}
---- !u!114 &8000376906715016024
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2237924620720955493}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 144e801c814596b4a8814bd6fdb0b917, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  workerCtrl: {fileID: 2816759508749729913}
-  target: {fileID: 0}
-  isWalking: 0
-  isWorking: 0
-  workingType: 0
-  walkLimit: 0.7
-  targetDistance: 0
 --- !u!195 &2209468687398005955
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -252,6 +214,44 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &2816759508749729913
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2237924620720955493}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af55f4000e1588540ae6f130e0697873, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  workerBuildings: {fileID: 8025129761938865177}
+  workerMovement: {fileID: 8000376906715016024}
+  workerTasks: {fileID: 2146258111439368745}
+  animator: {fileID: 6191459729956424610}
+  workerModel: {fileID: 219646167536734680}
+  navMeshAgent: {fileID: 2209468687398005955}
+  resCarrier: {fileID: 4493195563531541978}
+--- !u!114 &8000376906715016024
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2237924620720955493}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 144e801c814596b4a8814bd6fdb0b917, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  workerCtrl: {fileID: 2816759508749729913}
+  target: {fileID: 0}
+  isWalking: 0
+  isWorking: 0
+  workingType: 0
+  walkLimit: 0.7
+  targetDistance: 0
 --- !u!114 &8025129761938865177
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -287,6 +287,7 @@ MonoBehaviour:
   taskWorking: {fileID: 6641125412440597955}
   taskGoHome: {fileID: 1946402666120804305}
   taskTarget: {fileID: 0}
+  taskBuildingCtrl: {fileID: 0}
   tasks: 
 --- !u!114 &4493195563531541978
 MonoBehaviour:
@@ -300,7 +301,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73627bac4f329544e8a0e158b88d0bce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  carryCount: 1
   resources: []
 --- !u!1 &4965203273204172035
 GameObject:
@@ -312,7 +312,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5743031790950608306}
   m_Layer: 0
-  m_Name: Task
+  m_Name: Tasks
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -351,7 +351,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &4959556615763604158
 Transform:
   m_ObjectHideFlags: 0

@@ -41,20 +41,27 @@ public class WorkerMovement : BinBeha
 	public virtual void SetTarget(Transform trans)
 	{
 		this.target = trans;
-		this.IsCloseToTarget();
+
+		if (this.target == null)
+		{
+			this.workerCtrl.navMeshAgent.enabled = false;
+		}
+		else
+		{
+			this.workerCtrl.navMeshAgent.enabled = true;
+			this.IsCloseToTarget();
+		}
 	}
 
 	protected virtual void Moving()
 	{
-		if (this.target == null && this.IsCloseToTarget())
+		if (this.target == null || this.IsCloseToTarget())
 		{
-			this.workerCtrl.navMeshAgent.isStopped = true;
 			this.isWalking = false;
 			return;
 		}
 
 		this.isWalking = true;
-		this.workerCtrl.navMeshAgent.isStopped = false;
 		this.workerCtrl.navMeshAgent.SetDestination(this.target.position);
 	}
 

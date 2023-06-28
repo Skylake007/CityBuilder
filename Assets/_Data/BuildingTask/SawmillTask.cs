@@ -6,9 +6,8 @@ public class SawmillTask : BuildingTask
 {
 	[Header("Sawmill Task")]
 	[SerializeField] protected Transform workingPoint;
-	[SerializeField] protected int logwoodCount = 0;
-	[SerializeField] protected float blankReceive = 0f;
-	//[SerializeField] protected float workingSpeed = 7;
+	[SerializeField] protected int logwoodCount = 1;
+	[SerializeField] protected float blankReceive = 2f;
 
 
 	protected override void LoadComponents()
@@ -31,8 +30,8 @@ public class SawmillTask : BuildingTask
 			case TaskType.makingResource:
 				this.MakingResource(workerCtrl);
 				break;
-			case TaskType.gotoWorkPoint:
-			this.GotoWorkingPoint(workerCtrl);
+			case TaskType.gotoWorkingPoint:
+				this.GotoWorkingPoint(workerCtrl);
 				break;
 			case TaskType.goToWorkStation:
 				this.BackToWorkStation(workerCtrl);
@@ -43,10 +42,14 @@ public class SawmillTask : BuildingTask
 		}
 	}
 
-	protected virtual void GotoWorkingPoint(WorkerCtrl workerCtrl)
+	protected virtual void Planning(WorkerCtrl workerCtrl)
 	{
-		WorkerTasks workerTasks = workerCtrl.workerTasks;
-		if (workerTasks.inHouse) workerTasks.taskWorking.GoOutBuilding();
+		if (!this.IsStoreMax() && this.HasLogwood())
+		{
+			workerCtrl.workerTasks.TaskAdd(TaskType.goToWorkStation);
+			workerCtrl.workerTasks.TaskAdd(TaskType.makingResource);
+			workerCtrl.workerTasks.TaskAdd(TaskType.gotoWorkingPoint);
+		}
 	}
 
 	protected virtual void MakingResource(WorkerCtrl workerCtrl)
@@ -68,19 +71,29 @@ public class SawmillTask : BuildingTask
 		workerCtrl.workerTasks.TaskCurrentDone();
 	}
 
-	protected virtual void Planning(WorkerCtrl workerCtrl)
+	protected virtual void GotoWorkingPoint(WorkerCtrl workerCtrl)
 	{
-		if (!this.IsStoreMax() && this.HasLogwood())
-		{
-			workerCtrl.workerTasks.TaskAdd(TaskType.goToWorkStation);
-			workerCtrl.workerTasks.TaskAdd(TaskType.makingResource);
-			workerCtrl.workerTasks.TaskAdd(TaskType.gotoWorkPoint);
-		}
+		WorkerTasks workerTasks = workerCtrl.workerTasks;
+		if (workerTasks.inHouse) workerTasks.taskWorking.GoOutBuilding();
+
+		Transform target = workerCtrl.workerMovement.GetTarget();
+		if (target == null) workerCtrl.workerMovement.SetTarget(this.workingPoint);
+
+		if (!workerCtrl.workerMovement.IsCloseToTarget()) return;
+
+		workerCtrl.workerMovement.SetTarget(null);
+		workerCtrl.workerTasks.TaskCurrentDone();
 	}
 
 	protected virtual bool IsStoreMax()
-	{ return false; }
+	{
+		ResHolder blank = this.buildingCtrl.warehouse.GetResource(ResourceName.blank);
+		return blank.IsMax();
+	}
 
 	protected virtual bool HasLogwood()
-	{ return true; }
+	{
+		ResHolder logwood = this.buildingCtrl.warehouse.GetResource(ResourceName.logwood);
+		return logwood.Current() > 0;
+	}
 }

@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class ResCarrier : MonoBehaviour
 {
-    public int carryCount = 1;
     [SerializeField] protected List<Resource> resources;
 
     public virtual Resource AddResource(ResourceName resourceName, float number)
@@ -34,11 +33,6 @@ public class ResCarrier : MonoBehaviour
         Resource res = this.resources[0];
         this.resources.RemoveAt(0);
         return res;
-    }
-
-    public virtual Resource GetFirst()
-    {
-        return this.resources[0];
     }
 
     public virtual Resource GetResByName(ResourceName resourceName)

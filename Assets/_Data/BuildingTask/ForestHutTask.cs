@@ -9,10 +9,7 @@ public class ForestHutTask : BuildingTask
 	[SerializeField] protected int treeMax = 7;
 	[SerializeField] protected float treeRange = 27f;
 	[SerializeField] protected float treeDistance = 7f;
-	[SerializeField] protected int storeMax = 7;
-	[SerializeField] protected int storeCurrent = 0;
-	[SerializeField] protected float chopSpeed = 7;
-	[SerializeField] protected float treeRemoveSpeed = 3;
+	[SerializeField] protected float treeRemoveSpeed = 16;
 	[SerializeField] protected List<GameObject> treePrefabs;
 	[SerializeField] protected List<GameObject> trees;
 
@@ -22,11 +19,17 @@ public class ForestHutTask : BuildingTask
 		this.LoadNearByTrees();
 	}
 
+	protected override void FixedUpdate()
+	{
+		base.FixedUpdate();
+		this.RemoveDeadTrees();
+	}
+
 	protected override void LoadComponents()
 	{
 		base.LoadComponents();
 		this.LoadObjects();
-		this.LoadTrees();
+		this.LoadTreePrefabs();
 	}
 
 	protected virtual void LoadObjects()
@@ -36,7 +39,7 @@ public class ForestHutTask : BuildingTask
 		Debug.LogWarning(transform.name + " LoadObject", gameObject);
 	}
 
-	protected virtual void LoadTrees()
+	protected virtual void LoadTreePrefabs()
 	{
 		if (this.treePrefabs.Count > 0) return;
 		GameObject tree1 = Resources.Load<GameObject>("Res/Tree_1");
@@ -47,6 +50,16 @@ public class ForestHutTask : BuildingTask
 		this.treePrefabs.Add(tree2);
 		this.treePrefabs.Add(tree3);
 		Debug.LogWarning(transform.name + " LoadObjects", gameObject);
+	}
+
+	protected virtual void RemoveDeadTrees()
+	{
+		GameObject tree;
+		for (int i = 0; i < this.trees.Count; i++)
+		{
+			tree = this.trees[i];
+			if (tree == null) this.trees.RemoveAt(i);
+		}
 	}
 
 	public override void DoingTask(WorkerCtrl workerCtrl)
@@ -195,18 +208,17 @@ public class ForestHutTask : BuildingTask
 
 		TreeCtrl treeCtrl = tree.GetComponent<TreeCtrl>();
 		treeCtrl.treeLevel.ShowLastBuild();
-		//List<Resource> resources = treeCtrl.logwoodGenerator.TakeAll();
+		List<Resource> resources = treeCtrl.logwoodGenerator.TakeAll();
 		treeCtrl.choper = null;
 		this.trees.Remove(treeCtrl.gameObject);
 		TreeManager.instance.Trees().Remove(treeCtrl.gameObject);
 
 		workerCtrl.workerMovement.isWorking = false;
 		workerCtrl.workerTasks.taskTarget = null;
-		//workerCtrl.resCarrier.AddByList(resources);
+		workerCtrl.resCarrier.AddByList(resources);
 
 		workerCtrl.workerTasks.TaskCurrentDone();
 
-		//RemoveTree
 		StartCoroutine(RemoveTree(tree));
 	}
 
@@ -225,11 +237,6 @@ public class ForestHutTask : BuildingTask
 		}
 
 		return null;
-	}
-
-	protected virtual bool IsStoreFull()
-	{
-		return this.storeCurrent >= this.storeMax;
 	}
 
 	protected virtual void FindTreeToChop(WorkerCtrl workerCtrl)
