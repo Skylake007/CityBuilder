@@ -412,6 +412,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5c2da67bf01981479fb949a54ed2f90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  builder: {fileID: 0}
   percent: 0
   timer: 0
   delay: 0.05
@@ -5331,7 +5332,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2237924620720955493, guid: 937e66b7e213b1f40bfeaa1c22ceef90, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5533,6 +5534,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c6426009066f0f458c9b29ac2ef06c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  builder: {fileID: 0}
   percent: 0
   timer: 0
   delay: 0.05
@@ -5540,7 +5542,7 @@ MonoBehaviour:
   - ForestHut
   resRequires:
   - name: 2001
-    number: 2
+    number: 10
   resHave: []
 --- !u!23 &825612037
 MeshRenderer:
@@ -6562,6 +6564,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39f0a5c86235fbf4697408829c4a6dca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  builder: {fileID: 0}
   percent: 0
   timer: 0
   delay: 0.05
@@ -10122,7 +10125,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2237924620720955493, guid: 937e66b7e213b1f40bfeaa1c22ceef90, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -11157,6 +11160,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3483824330689841525, guid: f1add2a53f7ec3c4f85300ea002dcfb1, type: 3}
+      propertyPath: treeMax
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 5479217134877840983, guid: f1add2a53f7ec3c4f85300ea002dcfb1, type: 3}
       propertyPath: m_Name
       value: ForestHut
@@ -11726,7 +11733,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2237924620720955493, guid: 937e66b7e213b1f40bfeaa1c22ceef90, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -12023,7 +12030,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2237924620720955493, guid: 937e66b7e213b1f40bfeaa1c22ceef90, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -12154,6 +12161,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39f0a5c86235fbf4697408829c4a6dca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  builder: {fileID: 0}
   percent: 0
   timer: 0
   delay: 0.05
@@ -13158,6 +13166,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b540a611736379498f36054fe563018, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  builder: {fileID: 0}
   percent: 0
   timer: 0
   delay: 0.05

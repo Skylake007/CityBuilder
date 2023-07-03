@@ -59,7 +59,7 @@ public class ForestHutTask : BuildingTask
 		{
 			tree = this.trees[i];
 			if (tree == null) this.trees.RemoveAt(i);
-			Debug.Log("RemoveDead at" + i); 
+			//Debug.Log("RemoveDead at" + i); 
 		}
 	}
 
@@ -277,6 +277,5 @@ public class ForestHutTask : BuildingTask
 		taskWorking.GoIntoBuilding();
 
 		workerCtrl.workerTasks.TaskCurrentDone();
-	
 	}
 }
