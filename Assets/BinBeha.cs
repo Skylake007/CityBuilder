@@ -1,14 +1,12 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-[Serializable]
+
 public class BinBeha : MonoBehaviour
 {
     protected virtual void Reset()
     {
         this.LoadComponents();
+        this.ResetValues();
     }
 
     protected virtual void Awake()
@@ -17,6 +15,11 @@ public class BinBeha : MonoBehaviour
     }
 
     protected virtual void Start()
+    {
+        //For Overide
+    }
+
+    protected virtual void Update()
     {
         //For Overide
     }
@@ -37,6 +40,11 @@ public class BinBeha : MonoBehaviour
     }
 
     protected virtual void LoadComponents()
+    {
+        //For Overide
+    }
+
+    protected virtual void ResetValues()
     {
         //For Overide
     }

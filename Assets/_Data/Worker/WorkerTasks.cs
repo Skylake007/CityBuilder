@@ -38,7 +38,7 @@ public class WorkerTasks : BinBeha
 	{
 		if (this.workerCtrl != null) return;
 		this.workerCtrl = GetComponent<WorkerCtrl>();
-		Debug.LogWarning(transform.name + ": LoadWorkerCtrl", gameObject);
+		Debug.Log(transform.name + ": LoadWorkerCtrl", gameObject);
 	}
 
 	protected virtual void LoadTasks()
@@ -47,7 +47,7 @@ public class WorkerTasks : BinBeha
 		Transform tasksObj = transform.Find("Tasks");
 		this.taskWorking = tasksObj.GetComponentInChildren<TaskWorking>();
 		this.taskGoHome = tasksObj.GetComponentInChildren<TaskGoHome>();
-		Debug.LogWarning(transform.name + ": LoadTasks", gameObject);
+		Debug.Log(transform.name + ": LoadTasks", gameObject);
 	}
 
 	protected virtual void DisableTasks()
@@ -77,6 +77,7 @@ public class WorkerTasks : BinBeha
 
 	public virtual void TaskCurrentDone()
 	{
+		if (this.tasks.Count <= 0) return;
 		this.tasks.RemoveAt(this.tasks.Count - 1);
 	}
 

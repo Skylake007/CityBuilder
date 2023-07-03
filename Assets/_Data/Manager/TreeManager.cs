@@ -35,6 +35,8 @@ public class TreeManager : BinBeha
 		if (this.trees.Contains(tree)) return;	 
 		this.trees.Add(tree);
 		tree.transform.parent = transform;
+
+		//to do, need check with current forest hut
 	}
 
 	public virtual List<GameObject> Trees()

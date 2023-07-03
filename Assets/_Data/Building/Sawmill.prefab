@@ -306,7 +306,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2280561816772156011}
   m_LocalRotation: {x: -0, y: 0.07148667, z: -0, w: 0.9974416}
-  m_LocalPosition: {x: -0.119999886, y: 0.59, z: 5.03}
+  m_LocalPosition: {x: 3.37, y: 0.59, z: 1.83}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -812,7 +812,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5196519590113008047}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.11, y: 0, z: 2.43}
+  m_LocalPosition: {x: -3.46, y: 0, z: 1.85}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1112,7 +1112,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7290134721553800101}
-  - component: {fileID: 3301654626139461394}
   - component: {fileID: 5285991080463501858}
   - component: {fileID: 9217131596874486317}
   - component: {fileID: 7051784730199121087}
@@ -1144,29 +1143,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!136 &3301654626139461394
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8519291119319681721}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Radius: 3.1
-  m_Height: 8.63
-  m_Direction: 1
-  m_Center: {x: 0, y: 1.85, z: 0}
 --- !u!208 &5285991080463501858
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -1177,11 +1153,11 @@ NavMeshObstacle:
   m_Enabled: 1
   serializedVersion: 3
   m_Shape: 1
-  m_Extents: {x: 5, y: 2.5, z: 4}
+  m_Extents: {x: 4, y: 2, z: 2}
   m_MoveThreshold: 0.1
   m_Carve: 0
   m_CarveOnlyStationary: 1
-  m_Center: {x: -1.8, y: 1.5, z: 0}
+  m_Center: {x: -1, y: 1.5, z: -1}
   m_TimeToStationary: 0.5
 --- !u!114 &9217131596874486317
 MonoBehaviour:
@@ -1195,6 +1171,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5336d3cbd69870b42a9854e7ef44fcf4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buildingType: 1
   door: {fileID: 4137345239056794099}
   workers: {fileID: 7051784730199121087}
   warehouse: {fileID: 0}
@@ -1225,7 +1202,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db02a83abab1ac942a9fc776a92f941d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buildingType: 1
   isFull: 0
   resHolders:
   - {fileID: 8231255763295869555}
@@ -1247,7 +1223,7 @@ MonoBehaviour:
   timeDelay: 5
   workingSpeed: 7
   workingPoint: {fileID: 136002694546828647}
-  logwoodCount: 1
+  logwoodCost: 1
   blankReceive: 2
 --- !u!1 &8690197115243214974
 GameObject:

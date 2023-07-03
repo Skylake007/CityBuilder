@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ResGenerator : Warehouse
 {
+	[Header("ResGenerator")]
 	[SerializeField] protected List<Resource> resCreate;
 	[SerializeField] protected List<Resource> resRequire;
 	public bool canCreate = true;
@@ -17,6 +18,8 @@ public class ResGenerator : Warehouse
 
 	protected virtual void Creating()
 	{
+		if (!this.canCreate) return;
+
 		this.createTimer += Time.fixedDeltaTime;
 		if (this.createTimer < this.createDelay) return;
 		this.createTimer = 0;
@@ -25,7 +28,6 @@ public class ResGenerator : Warehouse
 
 		foreach (Resource res in this.resCreate)
 		{
-			//ResourceHolder resourceHolder = this.resourceHolders.Find((holder) => holder.Name() == res.name);
 			ResHolder resourceHolder = this.GetResource(res.name);
 			resourceHolder.Add(res.number);
 		}

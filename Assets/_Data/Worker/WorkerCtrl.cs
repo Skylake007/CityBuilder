@@ -37,13 +37,22 @@ public class WorkerCtrl : BinBeha
 
 	}
 
+	protected virtual void LoadWorkerBuilding()
+	{
+		if (this.workerBuildings != null) return;
+		this.workerBuildings = GetComponent<WorkerBuildings>();
+		Debug.Log(transform.name + ": LoadWorkerBuildings", gameObject);
+	
+	}
+
 	protected virtual void LoadWorkerMovement()
 	{
 		if (this.workerMovement != null) return;
 		this.workerMovement = GetComponent<WorkerMovement>();
-		Debug.LogWarning(transform.name + ": LoadWorkerMovement", gameObject);
+		Debug.Log(transform.name + ": LoadWorkerMovement", gameObject);
 
 	}
+
 	protected virtual void LoadAgent()
 	{
 		if (this.navMeshAgent != null) return;
@@ -51,6 +60,7 @@ public class WorkerCtrl : BinBeha
 		this.navMeshAgent.speed = 2f;
 		Debug.Log(transform.name + ": LoadAgent", gameObject);
 	}
+
 	protected virtual void LoadResCarrier()
 	{
 		if (this.resCarrier != null) return;
@@ -58,17 +68,4 @@ public class WorkerCtrl : BinBeha
 		Debug.Log(transform.name + ": ResCarrier", gameObject);
 	}
 
-	public virtual void WorkerReleased()
-	{
-		this.workerTasks.readyForTask = false;
-		this.workerTasks.taskWorking.GoOutBuilding();
-		this.workerBuildings.WorkerReleased();
-	}
-	protected virtual void LoadWorkerBuilding()
-	{
-		if (this.workerBuildings != null) return;
-		this.workerBuildings = GetComponent<WorkerBuildings>();
-		Debug.LogWarning(transform.name + ": LoadWorkerBuildings", gameObject);
-	
-	}
 }

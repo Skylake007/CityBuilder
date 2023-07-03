@@ -59,6 +59,7 @@ public class ForestHutTask : BuildingTask
 		{
 			tree = this.trees[i];
 			if (tree == null) this.trees.RemoveAt(i);
+			Debug.Log("RemoveDead at" + i); 
 		}
 	}
 
@@ -119,8 +120,8 @@ public class ForestHutTask : BuildingTask
 
 		if (workerCtrl.workerMovement.IsCloseToTarget())
 		{
-			workerCtrl.workerMovement.SetTarget(null);
-			Destroy(target.gameObject); //to do
+			//workerCtrl.workerMovement.SetTarget(null);
+			Destroy(target.gameObject); //TODO::not done yet
 			this.Planting(workerCtrl.transform);
 
 			if (!this.NeedMoreTree())
@@ -151,11 +152,7 @@ public class ForestHutTask : BuildingTask
 	{
 		Vector3 newTreePos = this.RandomPlaceForTree();
 		float dis = Vector3.Distance(transform.position, newTreePos);
-		if (dis < this.treeDistance)
-		{
-			Debug.Log("GetPlantPlace Destroy GameObject");
-			return null;
-		}
+		if (dis < this.treeDistance) return null;
 
 		GameObject treePlace = Instantiate(this.plantTreeObj);
 		treePlace.transform.position = newTreePos;
@@ -180,7 +177,6 @@ public class ForestHutTask : BuildingTask
 		foreach (GameObject tree in allTrees)
 		{
 			dis = Vector3.Distance(tree.transform.position, transform.position);
-			//Debug.Log(tree.name + ": " + dis);
 			if (dis > this.treeRange) continue;
 			this.TreeAdd(tree);
 		}
@@ -195,8 +191,6 @@ public class ForestHutTask : BuildingTask
 	protected virtual void ChopTree(WorkerCtrl workerCtrl)
 	{
 		if (workerCtrl.workerMovement.isWorking) return;
-
-		workerCtrl.workerMovement.isWorking = true;
 		StartCoroutine(Chopping(workerCtrl, workerCtrl.workerTasks.taskTarget));
 		Debug.Log("ChopTree");
 	}
@@ -250,7 +244,7 @@ public class ForestHutTask : BuildingTask
 		}
 		else if (workerCtrl.workerMovement.TargetDistance() <= 1.5f) //cach target 1 xiu~  
 		{
-			workerCtrl.workerMovement.SetTarget(null);
+			//workerCtrl.workerMovement.SetTarget(null);
 			workerCtrl.workerTasks.TaskCurrentDone();
 		}
 	}
@@ -259,9 +253,10 @@ public class ForestHutTask : BuildingTask
 	{
 		foreach (GameObject tree in this.trees)
 		{
+			if (tree == null) continue;
 			TreeCtrl treeCtrl = tree.GetComponent<TreeCtrl>(); //to do can make it faster
 			if (treeCtrl == null) continue;
-			//if (!treeCtrl.treeLevel.IsAllResMax()) continue;
+			if (!treeCtrl.logwoodGenerator.IsAllResMax()) continue;
 			if (treeCtrl.choper != null) continue;
 
 			treeCtrl.choper = workerCtrl;

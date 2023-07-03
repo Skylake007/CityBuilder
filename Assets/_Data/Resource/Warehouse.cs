@@ -5,7 +5,7 @@ using UnityEngine;
 public class Warehouse : BinBeha
 {
 	[Header("Wearhouse")]
-	public BuildingType buildingType = BuildingType.workStation;
+	//public BuildingType buildingType = BuildingType.workStation;
 	[SerializeField] protected bool isFull = false;
 	[SerializeField] protected List<ResHolder> resHolders;
 
@@ -27,10 +27,10 @@ public class Warehouse : BinBeha
 		foreach (Transform resTran in res)
 		{
 			Debug.Log("Res tran: " + resTran);
-			ResHolder resourceHolder = resTran.GetComponent<ResHolder>();
+			ResHolder resHolder = resTran.GetComponent<ResHolder>();
 
-			if (resourceHolder == null) continue;
-			this.resHolders.Add(resourceHolder);
+			if (resHolder == null) continue;
+			this.resHolders.Add(resHolder);
 		}
 
 		Debug.Log(transform.name + ": LoadHolders");

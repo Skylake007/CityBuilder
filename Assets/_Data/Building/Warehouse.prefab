@@ -716,7 +716,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 605109372154482869}
   m_LocalRotation: {x: -0, y: 0.07148667, z: -0, w: 0.9974416}
-  m_LocalPosition: {x: -0.119999886, y: 0.59, z: 4.55}
+  m_LocalPosition: {x: -0.119999886, y: 0.59, z: 6.15}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -17475,7 +17475,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5356417817124249659}
-  - component: {fileID: 6585268464492231038}
   - component: {fileID: 4537005218320234701}
   - component: {fileID: 1750515466677205395}
   - component: {fileID: 7369584279296850019}
@@ -17506,29 +17505,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!136 &6585268464492231038
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4217531891471724376}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Radius: 5.2997932
-  m_Height: 16.562843
-  m_Direction: 1
-  m_Center: {x: 2.293995, y: 2.8464222, z: -0.72623825}
 --- !u!208 &4537005218320234701
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -17557,6 +17533,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5336d3cbd69870b42a9854e7ef44fcf4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buildingType: 1
   door: {fileID: 4092648028634900023}
   workers: {fileID: 7369584279296850019}
   warehouse: {fileID: 0}
@@ -17587,9 +17564,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db02a83abab1ac942a9fc776a92f941d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buildingType: 1
   isFull: 0
-  resHolders: []
+  resHolders:
+  - {fileID: 3783844335442293626}
+  - {fileID: 4041650219558674615}
 --- !u!114 &1629534562250974408
 MonoBehaviour:
   m_ObjectHideFlags: 0

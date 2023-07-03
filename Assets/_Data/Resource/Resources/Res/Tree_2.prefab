@@ -187,7 +187,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a9aa5193d7ff3d4e82122ac02e3a9ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buildingType: 0
   isFull: 0
   resHolders: []
   resCreate: []
@@ -631,7 +630,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2807449429036958551, guid: f0c16f0ea935ea64297ca1d4d55d9746, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

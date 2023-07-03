@@ -5,10 +5,18 @@ using UnityEngine;
 public class GodModeCtrl : BinBeha
 {
     [Header("God Mode")]
+    public static GodModeCtrl instance;
+
     public Camera _camera;
     public GodMovement godMovement;
 
-    protected override void LoadComponents()
+	protected override void Awake()
+	{
+		base.Awake();
+        if (GodModeCtrl.instance != null) Debug.LogError("Only 1 GodModeCtrl allow to exist");
+        GodModeCtrl.instance = this;
+	}
+	protected override void LoadComponents()
     {
         base.LoadComponents();
         this.LoadGodMovement();

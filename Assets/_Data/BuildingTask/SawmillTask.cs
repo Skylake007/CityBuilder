@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class SawmillTask : BuildingTask
 {
-	[Header("Sawmill Task")]
+	[Header("Sawmill")]
 	[SerializeField] protected Transform workingPoint;
-	[SerializeField] protected int logwoodCount = 1;
+	[SerializeField] protected float logwoodCost = 1;
 	[SerializeField] protected float blankReceive = 2f;
 
 
@@ -64,7 +64,7 @@ public class SawmillTask : BuildingTask
 		workerCtrl.workerMovement.workingType = WorkingType.sawing;
 		yield return new WaitForSeconds(this.workingSpeed);
 
-		this.buildingCtrl.warehouse.RemoveResource(ResourceName.logwood, this.logwoodCount);
+		this.buildingCtrl.warehouse.RemoveResource(ResourceName.logwood, this.logwoodCost);
 		this.buildingCtrl.warehouse.AddResource(ResourceName.blank, this.blankReceive);
 
 		workerCtrl.workerMovement.isWorking = false;

@@ -34,15 +34,15 @@ public class WorkerTask : BinBeha
 	{
 		if (this.workerCtrl != null) return;
 		this.workerCtrl = transform.parent.parent.GetComponent<WorkerCtrl>();
-		Debug.LogWarning(transform.name + ": LoadWorkerCtrl", gameObject);
+		Debug.Log(transform.name + ": LoadWorkerCtrl", gameObject);
 	}
 
 	protected virtual void FindBuilding()
 	{
-		if (this.GetBuilding() != null) return;
-
 		BuildingCtrl buildingCtrl = BuildingManager.instance.FindBuilding(this.GetBuildingType());
 		if (buildingCtrl == null) return;
+
+		buildingCtrl.workers.AddWorker(transform);
 		this.AssignBuilding(buildingCtrl);
 	}
 

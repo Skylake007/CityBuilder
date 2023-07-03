@@ -11,7 +11,6 @@ public class WorkerBuildings : BinBeha
 
 	public virtual void AssignWork(BuildingCtrl buildingCtrl)
 	{
-		//Phan cong
 		this.workBuilding = buildingCtrl;
 	}
 
@@ -28,11 +27,5 @@ public class WorkerBuildings : BinBeha
 	public virtual BuildingCtrl GetHome()
 	{
 		return this.homeBuilding;
-	}
-
-	public virtual void WorkerReleased()
-	{
-		this.workBuilding = null;
-		this.homeBuilding = null;
 	}
 }

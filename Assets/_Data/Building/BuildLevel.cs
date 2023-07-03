@@ -7,7 +7,7 @@ public class BuildLevel : BinBeha
 	[SerializeField] protected List<Transform> levels;
 	[SerializeField] protected int currentLevel = 0;
 
-	private void OnEnable()
+	protected override void OnEnable()
 	{
 		this.ShowBuilding();
 		//InvokeRepeating("ShowNextBuild", 3, 2);
@@ -27,6 +27,8 @@ public class BuildLevel : BinBeha
 			this.levels.Add(child);
 			child.gameObject.SetActive(false);
 		}
+
+		this.levels[0].gameObject.SetActive(true);
 
 		Debug.Log(transform.name + ": LoadBuildings");
 	}

@@ -15,6 +15,7 @@ public class GodInput : BinBeha
     {
         this.InputHandle();
         this.MouseRotation();
+        this.ChoosePlaceToBuild();
     }
 
     protected override void LoadComponents()
@@ -52,6 +53,7 @@ public class GodInput : BinBeha
         { 
             this.mouseRotation = (Input.mousePosition - this.mouseReference);
             this.mouseRotation.y = -(this.mouseRotation.x + this.mouseRotation.y);
+
             this.mouseReference = Input.mousePosition;
         }
         else
@@ -61,4 +63,12 @@ public class GodInput : BinBeha
         
         this.godModeCtrl.godMovement.camRotation.y = this.mouseRotation.x * rotationSpeed;
     }
+
+    protected virtual void ChoosePlaceToBuild()
+    {
+        if (!BuildManager.instance.isBuilding) return;
+        if (!Input.GetKeyUp(KeyCode.Mouse0)) return;
+        BuildManager.instance.CurrentBuildPlace();
+    }
+
 }

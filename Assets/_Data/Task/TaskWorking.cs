@@ -16,6 +16,6 @@ public class TaskWorking : WorkerTask
 
     protected override BuildingType GetBuildingType()
     {
-    return BuildingType.workStation;
+        return BuildingType.workStation;
     }
 }

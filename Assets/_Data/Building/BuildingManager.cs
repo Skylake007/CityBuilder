@@ -30,7 +30,7 @@ public class BuildingManager : BinBeha
 			this.buildingCtrls.Add(ctrl);
 		}
 
-		Debug.LogWarning(transform.name + ": LoadBuildingCtrls", gameObject);
+		Debug.Log(transform.name + ": LoadBuildingCtrls", gameObject);
 	}
 
 	public virtual BuildingCtrl FindBuilding(BuildingType buildingType)
@@ -40,7 +40,7 @@ public class BuildingManager : BinBeha
 		{
 			buildingCtrl = this.buildingCtrls[i];
 			if (!buildingCtrl.workers.IsNeedWorker()) continue;
-			if (buildingCtrl.warehouse.buildingType != buildingType) continue;
+			if (buildingCtrl.buildingType != buildingType) continue;
 
 			return buildingCtrl;
 		}
@@ -50,5 +50,13 @@ public class BuildingManager : BinBeha
 	public virtual List<BuildingCtrl> BuildingCtrls()
 	{
 		return this.buildingCtrls;
+	}
+
+	public virtual void AddBuilding(BuildingCtrl buildingCtrl)
+	{
+		Debug.Log("BuildingCtrl" + buildingCtrl);
+
+		this.buildingCtrls.Add(buildingCtrl);
+		buildingCtrl.transform.parent = transform;
 	}
 }
