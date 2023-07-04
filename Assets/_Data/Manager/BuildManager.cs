@@ -83,7 +83,8 @@ public class BuildManager : BinBeha
 		Ray ray = GodModeCtrl.instance._camera.ScreenPointToRay(Input.mousePosition);
 		//Diem cham giua con chuot va mat phang
 
-		if (Physics.Raycast(ray, out RaycastHit hit))
+		int mask = (1 << MyLayerManager.instance.layerGround);
+		if (Physics.Raycast(ray, out RaycastHit hit, 999, mask))
 		{
 			this.buildPos = hit.point;
 			this.currentBuild.position = this.buildPos;
@@ -92,16 +93,31 @@ public class BuildManager : BinBeha
 
 	public virtual void CurrentBuildPlace()
 	{
-		GameObject newBuild = Instantiate(this.currentBuild.gameObject);
-		newBuild.transform.position = this.buildPos;
+		if (this.currentBuild == null) return;
+
+		ConstructionCtrl constructionCtrl = this.currentBuild.GetComponent<ConstructionCtrl>();
+		if (constructionCtrl && constructionCtrl.limitRadius.IsCollided())
+		{
+			Debug.LogWarning("Collided: " + constructionCtrl.limitRadius.colliderObjs);
+			return;
+		}
+
+		string constructionName = constructionCtrl.abstractConstruction.GetConstructionName();
+		if (constructionName != null)
+		{
+			Transform newBuild = PrefabManager.instance.Instantiate(constructionName);
+			newBuild.position = this.buildPos;
+			newBuild.name = this.currentBuild.name;
+			newBuild.gameObject.SetActive(true);
+
+			AbstractConstruction abs = newBuild.GetComponent<AbstractConstruction>();
+			abs.isPlaced = true;
+			ConstructionManager.instance.AddConstruction(abs);
+		}
 
 		this.currentBuild.gameObject.SetActive(false);
 		this.currentBuild = null;
 		this.isBuilding = false;
-
-		AbstractConstruction abstractConstruction = newBuild.GetComponent<AbstractConstruction>();
-		ConstructionManager.instance.AddConstruction(abstractConstruction);
-
 	}
 
 	private void OnDrawGizmosSelected()

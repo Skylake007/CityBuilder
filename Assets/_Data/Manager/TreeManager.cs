@@ -39,6 +39,11 @@ public class TreeManager : BinBeha
 		//to do, need check with current forest hut
 	}
 
+	public virtual bool TreeRemove(GameObject tree)
+	{
+		return this.trees.Remove(tree);
+	}
+
 	public virtual List<GameObject> Trees()
 	{
 		return this.trees;

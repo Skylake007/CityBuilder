@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class GodInput : BinBeha
@@ -61,7 +59,7 @@ public class GodInput : BinBeha
             this.mouseRotation = Vector3.zero;
         }
         
-        this.godModeCtrl.godMovement.camRotation.y = this.mouseRotation.x * rotationSpeed;
+        this.godModeCtrl.godMovement.camRotation.y = this.mouseRotation.x;
     }
 
     protected virtual void ChoosePlaceToBuild()

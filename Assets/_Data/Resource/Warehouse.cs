@@ -41,6 +41,11 @@ public class Warehouse : BinBeha
 		return this.resHolders.Find((holder) => holder.Name() == name);
 	}
 
+	public virtual List<ResHolder> GetStockedResource()
+	{
+		return this.resHolders.FindAll((holder) => holder.resCurrent > 0);
+	}
+
 	public virtual void AddByList(List<Resource> addResources)
 	{
 		foreach (Resource addResource in addResources)
@@ -77,8 +82,8 @@ public class Warehouse : BinBeha
 		return null;
 	}
 
-	public virtual ResHolder IsNeedRes(Resource res)
+	public virtual List<Resource> NeedResources()
 	{
-		return null;
+		return new List<Resource>(); //Do not return null
 	}
 }

@@ -17,7 +17,7 @@ public class TreeCtrl : BinBeha
     {
         if (this.treeLevel != null) return;
         this.treeLevel = GetComponent<TreeLevel>();
-        Debug.LogWarning(transform.name + " LoadTreeLevel", gameObject);
+        Debug.Log(transform.name + " LoadTreeLevel", gameObject);
     }
 
     protected virtual void LoadLogwoodGenerator()

@@ -172,7 +172,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4620687158430438151}
   m_LocalRotation: {x: -0, y: 0.07148667, z: -0, w: 0.9974416}
-  m_LocalPosition: {x: -0.119999886, y: 0.59, z: 4.55}
+  m_LocalPosition: {x: -0.119999886, y: 0, z: 5.39}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -189,17 +189,19 @@ GameObject:
   m_Component:
   - component: {fileID: 2069930332097008157}
   - component: {fileID: 6972969479874739030}
+  - component: {fileID: 3218291060664906152}
   - component: {fileID: 1886969318838088509}
   - component: {fileID: 852627514366503351}
   - component: {fileID: 271245001073931594}
   - component: {fileID: 3483824330689841525}
-  m_Layer: 0
+  - component: {fileID: 3293667962280058244}
+  m_Layer: 9
   m_Name: ForestHut
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2069930332097008157
 Transform:
   m_ObjectHideFlags: 0
@@ -228,12 +230,33 @@ NavMeshObstacle:
   m_Enabled: 1
   serializedVersion: 3
   m_Shape: 0
-  m_Extents: {x: 2, y: 1, z: 2}
+  m_Extents: {x: 3.6, y: 1, z: 3.6}
   m_MoveThreshold: 0.1
   m_Carve: 1
   m_CarveOnlyStationary: 1
   m_Center: {x: 0, y: 0, z: 0}
   m_TimeToStationary: 0.5
+--- !u!65 &3218291060664906152
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5479217134877840983}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 6, y: 3, z: 6}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1886969318838088509
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -246,6 +269,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5336d3cbd69870b42a9854e7ef44fcf4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buildingType: 1
   door: {fileID: 857888243956614178}
   workers: {fileID: 852627514366503351}
   warehouse: {fileID: 271245001073931594}
@@ -262,7 +286,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fad3cbc032adf2042bc9fda2b103bc1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxWorker: 3
+  maxWorker: 1
   workers: []
 --- !u!114 &271245001073931594
 MonoBehaviour:
@@ -276,7 +300,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf850a4fe7572fc47bcbf51861898a4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buildingType: 1
   isFull: 0
   resHolders:
   - {fileID: 0}
@@ -296,6 +319,8 @@ MonoBehaviour:
   taskTimer: 0
   timeDelay: 5
   workingSpeed: 7
+  lastBuildingWorked: 0
+  nearBuildings: []
   plantTreeObj: {fileID: 6766349002587259839, guid: 6c766767af3f9d641a049bea61eab215, type: 3}
   treeMax: 7
   treeRange: 27
@@ -306,6 +331,19 @@ MonoBehaviour:
   - {fileID: 9176410908317736447, guid: 20c064839206ec04fa31cdec99336d11, type: 3}
   - {fileID: 9176410908317736447, guid: 06709220ff542c0439e015e28ca4d5fe, type: 3}
   trees: []
+--- !u!114 &3293667962280058244
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5479217134877840983}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f408443fca843c24090160d7ce34f27c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buildingCtrl: {fileID: 1886969318838088509}
 --- !u!1 &8242425657225242510
 GameObject:
   m_ObjectHideFlags: 0
@@ -315,7 +353,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 389612074003849525}
-  - component: {fileID: 4759114886931846954}
+  - component: {fileID: 7680915604819414707}
   m_Layer: 0
   m_Name: logwood
   m_TagString: Untagged
@@ -338,7 +376,7 @@ Transform:
   m_Father: {fileID: 3250154639249733390}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4759114886931846954
+--- !u!114 &7680915604819414707
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -347,11 +385,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 8242425657225242510}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4a72885d768704e44aa70467c685765d, type: 3}
+  m_Script: {fileID: 11500000, guid: 38f416fae9e777441b105c19110a361f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   resName: 1001
-  resCurrent: 7
+  resCurrent: 0
   resMax: 7
 --- !u!1 &8574463044324409520
 GameObject:

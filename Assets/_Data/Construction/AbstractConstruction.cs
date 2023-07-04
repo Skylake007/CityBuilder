@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 using UnityEngine;
 
 public class AbstractConstruction : BinBeha
 {
     [Header("Build")]
 	public BuildingCtrl builder;
+	public bool isPlaced = false;
 	[SerializeField] protected float percent = 0f;
     [SerializeField] protected float timer = 0f;
     [SerializeField] protected float delay = 0.05f;
@@ -35,6 +37,7 @@ public class AbstractConstruction : BinBeha
 
 	protected virtual void Building()
     {
+		if (!this.isPlaced) return;
 		if (!this.HasEnoughtResource()) return;
 
 		this.timer += Time.fixedDeltaTime;
@@ -84,8 +87,6 @@ public class AbstractConstruction : BinBeha
 		return newBuild;
 	}
 
-
-
 	protected virtual string GetBuildName()
 	{
 		int ran = Random.Range(0, this.buildNames.Count);
@@ -95,13 +96,16 @@ public class AbstractConstruction : BinBeha
     { 
 		this.percent = 0;
 		this.timer = 0;
+		this.isPlaced = false;
 	}
 
 	protected virtual void LoadBuildNames()
 	{
 		if (this.buildNames.Count > 0) return;
-		string name = transform.name.Replace("Build", "");
-		this.buildNames.Add(name);
+		Regex regex  = new Regex(Regex.Escape("Build"));
+		string newText = regex.Replace(transform.name, "", 1);
+
+		this.buildNames.Add(newText);
 		Debug.Log(transform.name + ": LoadBuildNames", gameObject);
 	}
 
@@ -130,5 +134,10 @@ public class AbstractConstruction : BinBeha
 	public virtual void Finish()
 	{
 		this.percent = 100;
+	}
+
+	public virtual string GetConstructionName()
+	{
+		return transform.name;
 	}
 }

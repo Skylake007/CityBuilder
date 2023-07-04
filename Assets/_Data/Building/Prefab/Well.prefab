@@ -70,7 +70,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3c4b2eb692575d44ba468a31aba1bfc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buildingType: 0
   isFull: 0
   resHolders: []
   resCreate: []

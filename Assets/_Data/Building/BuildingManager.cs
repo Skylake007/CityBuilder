@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -54,9 +53,21 @@ public class BuildingManager : BinBeha
 
 	public virtual void AddBuilding(BuildingCtrl buildingCtrl)
 	{
-		Debug.Log("BuildingCtrl" + buildingCtrl);
-
 		this.buildingCtrls.Add(buildingCtrl);
 		buildingCtrl.transform.parent = transform;
+		this.NearBuildingRecheck();
+	}
+
+	public virtual void RemoveBuilding(BuildingCtrl buildingCtrl)
+	{
+		this.buildingCtrls.Remove(buildingCtrl);
+	}
+
+	protected virtual void NearBuildingRecheck()
+	{
+		foreach (BuildingCtrl buildingCtrl in this.buildingCtrls)
+		{
+			buildingCtrl.buildingTask.FindNearByBuildings();
+		}
 	}
 }

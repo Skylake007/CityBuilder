@@ -68,4 +68,10 @@ public class WorkerCtrl : BinBeha
 		Debug.Log(transform.name + ": ResCarrier", gameObject);
 	}
 
+	public virtual void WorkerReleased()
+	{
+		this.workerTasks.readyForTask = false;
+		this.workerTasks.taskWorking.GoOutBuilding();
+		this.workerBuildings.WorkerReleased();
+	}
 }

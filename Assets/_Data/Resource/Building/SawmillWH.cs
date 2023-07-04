@@ -4,19 +4,26 @@ using UnityEngine;
 
 public class SawmillWH : Warehouse
 {
-	
-	public override ResHolder ResNeedToMove()
-	{
-		ResHolder resHolder = this.GetResource(ResourceName.blank);
-		if(resHolder.Current() > 0) return resHolder;
-		return null;
-	}
-	public override ResHolder IsNeedRes(Resource res)
-	{
-		if (res.name != ResourceName.logwood) return null;
+    public override ResHolder ResNeedToMove()
+    {
+        ResHolder resHolder = this.GetResource(ResourceName.blank);
+        if (resHolder.Current() > 0) return resHolder;
+        return null;
+    }
 
-		ResHolder resHolder = this.GetResource(res.name);
-		if (resHolder.IsMax()) return null;
-		return resHolder;
-	}
+    public override List<Resource> NeedResources()
+    {
+        List<Resource> resources = new List<Resource>();
+
+        ResHolder logwood = this.GetResource(ResourceName.logwood);
+        Resource resLogwood = new Resource
+        {
+            name = logwood.Name(),
+            number = logwood.resMax - logwood.resCurrent
+        };
+
+        if (resLogwood.number > 0) resources.Add(resLogwood);
+
+        return resources;
+    }
 }

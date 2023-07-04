@@ -17480,7 +17480,8 @@ GameObject:
   - component: {fileID: 7369584279296850019}
   - component: {fileID: 2961449585932253684}
   - component: {fileID: 1629534562250974408}
-  m_Layer: 0
+  - component: {fileID: 142529957151572091}
+  m_Layer: 9
   m_Name: Warehouse
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17503,7 +17504,7 @@ Transform:
   - {fileID: 2265678014091694656}
   - {fileID: 4092648028634900023}
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!208 &4537005218320234701
 NavMeshObstacle:
@@ -17536,8 +17537,8 @@ MonoBehaviour:
   buildingType: 1
   door: {fileID: 4092648028634900023}
   workers: {fileID: 7369584279296850019}
-  warehouse: {fileID: 0}
-  buildingTask: {fileID: 0}
+  warehouse: {fileID: 2961449585932253684}
+  buildingTask: {fileID: 1629534562250974408}
 --- !u!114 &7369584279296850019
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17550,7 +17551,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fad3cbc032adf2042bc9fda2b103bc1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxWorker: 5
+  maxWorker: 1
   workers: []
 --- !u!114 &2961449585932253684
 MonoBehaviour:
@@ -17584,6 +17585,19 @@ MonoBehaviour:
   taskTimer: 0
   timeDelay: 5
   workingSpeed: 7
+--- !u!114 &142529957151572091
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4217531891471724376}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f408443fca843c24090160d7ce34f27c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buildingCtrl: {fileID: 1750515466677205395}
 --- !u!1 &4228144901399296845
 GameObject:
   m_ObjectHideFlags: 0

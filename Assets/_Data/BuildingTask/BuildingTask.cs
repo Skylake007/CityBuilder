@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,7 +8,14 @@ public class BuildingTask : BinBeha
 	[SerializeField] protected float taskTimer = 0f;
 	[SerializeField] protected float timeDelay = 5f;
 	[SerializeField] protected float workingSpeed = 7;
+	[SerializeField] protected int lastBuildingWorked = 0;
+	[SerializeField] protected List<BuildingCtrl> nearBuildings;
 
+	protected override void Start()
+	{
+		base.Start();
+		this.FindNearByBuildings();
+	}
 
 	protected override void LoadComponents()
 	{
@@ -32,7 +38,7 @@ public class BuildingTask : BinBeha
 		return true;
 	}
 
-	protected virtual void BackToWorkStation(WorkerCtrl workerCtrl)
+	protected virtual void GoToWorkStation(WorkerCtrl workerCtrl)
 	{
 		WorkerTask taskWorking = workerCtrl.workerTasks.taskWorking;
 		taskWorking.GotoBuilding();
@@ -50,6 +56,17 @@ public class BuildingTask : BinBeha
 
 	public virtual void FindNearByBuildings()
 	{
-		//For override}
+		this.nearBuildings = new List<BuildingCtrl>(BuildingManager.instance.BuildingCtrls());
+		this.nearBuildings.Sort(delegate (BuildingCtrl a, BuildingCtrl b)
+		{
+			Vector3 aPos = a.transform.position;
+			Vector3 bPos = b.transform.position;
+			Vector3 currentPos = transform.position;
+
+			return Vector3.Distance(currentPos, aPos)
+			.CompareTo(Vector3.Distance(currentPos, bPos));
+		});
+
+		//Invoke("FindNearBuildings", 7f);
 	}
 }

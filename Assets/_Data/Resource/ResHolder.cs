@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class ResHolder : BinBeha
 {
+	[Header("Res Holder")]
 	[SerializeField] protected ResourceName resName;
-	[SerializeField] protected float resCurrent = 0f;
-	[SerializeField] protected float resMax = Mathf.Infinity;
+	[SerializeField] public float resCurrent = 0f;
+	[SerializeField] public float resMax = Mathf.Infinity;
 
 	protected override void LoadComponents()
 	{

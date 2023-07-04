@@ -28,4 +28,10 @@ public class WorkerBuildings : BinBeha
 	{
 		return this.homeBuilding;
 	}
+
+	public virtual void WorkerReleased()
+	{
+		this.workBuilding = null;
+		this.homeBuilding = null;
+	}
 }

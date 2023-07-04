@@ -31,10 +31,10 @@ public class SawmillTask : BuildingTask
 				this.MakingResource(workerCtrl);
 				break;
 			case TaskType.gotoWorkingPoint:
-				this.GotoWorkingPoint(workerCtrl);
+				this.GoToWorkingPoint(workerCtrl);
 				break;
 			case TaskType.goToWorkStation:
-				this.BackToWorkStation(workerCtrl);
+				this.GoToWorkStation(workerCtrl);
 				break;
 			default:
 				if (this.IsTimeToWork()) this.Planning(workerCtrl);
@@ -71,7 +71,7 @@ public class SawmillTask : BuildingTask
 		workerCtrl.workerTasks.TaskCurrentDone();
 	}
 
-	protected virtual void GotoWorkingPoint(WorkerCtrl workerCtrl)
+	protected virtual void GoToWorkingPoint(WorkerCtrl workerCtrl)
 	{
 		WorkerTasks workerTasks = workerCtrl.workerTasks;
 		if (workerTasks.inHouse) workerTasks.taskWorking.GoOutBuilding();

@@ -10,7 +10,6 @@ public class BuildLevel : BinBeha
 	protected override void OnEnable()
 	{
 		this.ShowBuilding();
-		//InvokeRepeating("ShowNextBuild", 3, 2);
 	}
 
 	protected override void LoadComponents()
@@ -52,13 +51,13 @@ public class BuildLevel : BinBeha
 
 	protected virtual void ShowBuilding()
 	{
-		this.HideLastBuilding();
+		this.HideLastBuild();
 		Transform currentBuild = this.levels[this.currentLevel];
 		currentBuild.gameObject.SetActive(true);
 
 	}
 
-	protected virtual void HideLastBuilding()
+	protected virtual void HideLastBuild()
 	{
 		int lastBuildIndex = this.currentLevel - 1;
 		if (lastBuildIndex < 0) return;

@@ -21,7 +21,11 @@ public enum TaskType
     findTreeToChop = 102,//TODO: use findWorkingPoint instead
 
     //Warehouse
-    findBuildingNeedRes = 301,
+    findBuildingHasProduct = 300,
+    goToGetProduct = 301,
+    takingProductBack = 302,
+    findBuildingNeedMaterial = 310,
+    bringMaterialToBuilding = 311,
 
     //House Builder
     findWarehouseHasRes = 400,

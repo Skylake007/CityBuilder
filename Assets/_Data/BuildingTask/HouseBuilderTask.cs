@@ -29,6 +29,9 @@ public class HouseBuilderTask : BuildingTask
             case TaskType.buildConstruction:
                 this.BuildConstruction(workerCtrl);
                 break;
+            case TaskType.goToWorkStation:
+                this.GoToWorkStation(workerCtrl);
+                break;
             default:
                 if (this.IsTimeToWork()) this.Planning(workerCtrl);
                 break;

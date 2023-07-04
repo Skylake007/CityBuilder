@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class LogwoodGenerator : ResGenerator
 {
+    protected override void ResetValues()
+    {
+        base.ResetValues();
+        this.createDelay = 60f;
+    }
+
     protected override void LoadComponents()
     {
         base.LoadComponents();
@@ -11,7 +17,7 @@ public class LogwoodGenerator : ResGenerator
         this.SetLimit();
     }
 
-    protected virtual void LoadResCreate()
+	protected virtual void LoadResCreate()
     {
         Resource res = new Resource
         {

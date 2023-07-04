@@ -1,12 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class GodModeCtrl : BinBeha
 {
-    [Header("God Mode")]
     public static GodModeCtrl instance;
 
+    [Header("God Mode")]
     public Camera _camera;
     public GodMovement godMovement;
 

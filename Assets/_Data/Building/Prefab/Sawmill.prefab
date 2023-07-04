@@ -960,7 +960,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2227545886280632317}
-  - component: {fileID: 8231255763295869555}
+  - component: {fileID: 8164610424609131958}
   m_Layer: 0
   m_Name: logwood
   m_TagString: Untagged
@@ -983,7 +983,7 @@ Transform:
   m_Father: {fileID: 1119844088248983434}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8231255763295869555
+--- !u!114 &8164610424609131958
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -992,12 +992,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 6463523263919241645}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4a72885d768704e44aa70467c685765d, type: 3}
+  m_Script: {fileID: 11500000, guid: a9c5fffdfa8208f44929849d84859da7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   resName: 1001
-  resCurrent: 1
-  resMax: 4
+  resCurrent: 0
+  resMax: 1
 --- !u!1 &7759619114795355133
 GameObject:
   m_ObjectHideFlags: 0
@@ -1115,9 +1115,10 @@ GameObject:
   - component: {fileID: 5285991080463501858}
   - component: {fileID: 9217131596874486317}
   - component: {fileID: 7051784730199121087}
-  - component: {fileID: 7901736572257785714}
+  - component: {fileID: 782921876411642898}
   - component: {fileID: 2656618945067917417}
-  m_Layer: 0
+  - component: {fileID: 8120171087188447185}
+  m_Layer: 9
   m_Name: Sawmill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1141,7 +1142,7 @@ Transform:
   - {fileID: 4137345239056794099}
   - {fileID: 136002694546828647}
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!208 &5285991080463501858
 NavMeshObstacle:
@@ -1153,11 +1154,11 @@ NavMeshObstacle:
   m_Enabled: 1
   serializedVersion: 3
   m_Shape: 1
-  m_Extents: {x: 4, y: 2, z: 2}
+  m_Extents: {x: 4, y: 0.5, z: 2}
   m_MoveThreshold: 0.1
   m_Carve: 0
   m_CarveOnlyStationary: 1
-  m_Center: {x: -1, y: 1.5, z: -1}
+  m_Center: {x: -1, y: 1, z: -1}
   m_TimeToStationary: 0.5
 --- !u!114 &9217131596874486317
 MonoBehaviour:
@@ -1174,8 +1175,8 @@ MonoBehaviour:
   buildingType: 1
   door: {fileID: 4137345239056794099}
   workers: {fileID: 7051784730199121087}
-  warehouse: {fileID: 0}
-  buildingTask: {fileID: 0}
+  warehouse: {fileID: 782921876411642898}
+  buildingTask: {fileID: 2656618945067917417}
 --- !u!114 &7051784730199121087
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1188,9 +1189,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fad3cbc032adf2042bc9fda2b103bc1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxWorker: 5
+  maxWorker: 1
   workers: []
---- !u!114 &7901736572257785714
+--- !u!114 &782921876411642898
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1199,13 +1200,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 8519291119319681721}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db02a83abab1ac942a9fc776a92f941d, type: 3}
+  m_Script: {fileID: 11500000, guid: 2cd8ef0249eeb514a9005eb529ea20d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   isFull: 0
   resHolders:
-  - {fileID: 8231255763295869555}
-  - {fileID: 7732034058783264989}
+  - {fileID: 8164610424609131958}
+  - {fileID: 4383485648978738454}
 --- !u!114 &2656618945067917417
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1225,6 +1226,19 @@ MonoBehaviour:
   workingPoint: {fileID: 136002694546828647}
   logwoodCost: 1
   blankReceive: 2
+--- !u!114 &8120171087188447185
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8519291119319681721}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f408443fca843c24090160d7ce34f27c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buildingCtrl: {fileID: 9217131596874486317}
 --- !u!1 &8690197115243214974
 GameObject:
   m_ObjectHideFlags: 0
@@ -1234,7 +1248,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8591292597797091213}
-  - component: {fileID: 7732034058783264989}
+  - component: {fileID: 4383485648978738454}
   m_Layer: 0
   m_Name: blank
   m_TagString: Untagged
@@ -1257,7 +1271,7 @@ Transform:
   m_Father: {fileID: 1119844088248983434}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7732034058783264989
+--- !u!114 &4383485648978738454
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1266,12 +1280,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 8690197115243214974}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4a72885d768704e44aa70467c685765d, type: 3}
+  m_Script: {fileID: 11500000, guid: 6802bc12fc9f5fa419ff6ec0dc3508b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   resName: 2001
-  resCurrent: 2
-  resMax: 6
+  resCurrent: 0
+  resMax: 4
 --- !u!1 &9117794582984649026
 GameObject:
   m_ObjectHideFlags: 0

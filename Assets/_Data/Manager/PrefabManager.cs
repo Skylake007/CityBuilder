@@ -32,8 +32,9 @@ public class PrefabManager : BinBeha
         foreach (Transform child in transform)
         {
             this.prefabs.Add(child);
-            child.gameObject.SetActive(false);
+            //child.gameObject.SetActive(false);
         }
+        Debug.Log(transform.name + ": LoadPrefabs", gameObject);
     }
 
     protected virtual void HideAllPrefabs()
@@ -46,6 +47,7 @@ public class PrefabManager : BinBeha
 
     public virtual Transform Instantiate(string prefabName)
     {
+        Debug.Log(transform.name + ": " + prefabName);
         Transform prefab = this.Get(prefabName);
         GameObject newObj = Instantiate(prefab.gameObject);
         newObj.name = prefab.name;
