@@ -15,7 +15,7 @@ public class WaterGenerator : ResGenerator
 	{
 		Resource res = new Resource
 		{
-			name = ResourceName.logwood,
+			name = ResourceName.water,
 			number = 1
 		};
 

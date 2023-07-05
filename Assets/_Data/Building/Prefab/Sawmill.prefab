@@ -1142,7 +1142,7 @@ Transform:
   - {fileID: 4137345239056794099}
   - {fileID: 136002694546828647}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!208 &5285991080463501858
 NavMeshObstacle:
@@ -1223,6 +1223,8 @@ MonoBehaviour:
   taskTimer: 0
   timeDelay: 5
   workingSpeed: 7
+  lastBuildingWorked: 0
+  nearBuildings: []
   workingPoint: {fileID: 136002694546828647}
   logwoodCost: 1
   blankReceive: 2

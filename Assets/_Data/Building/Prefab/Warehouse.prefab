@@ -17585,6 +17585,16 @@ MonoBehaviour:
   taskTimer: 0
   timeDelay: 5
   workingSpeed: 7
+  lastBuildingWorked: 0
+  nearBuildings: []
+  takeProductCount: 0
+  takeProductMax: 7
+  takeProductTimer: 0
+  takeProductDelay: 7
+  bringMaterialCount: 0
+  bringMaterialMax: 2
+  bringMaterialTimer: 0
+  bringMaterialDelay: 7
 --- !u!114 &142529957151572091
 MonoBehaviour:
   m_ObjectHideFlags: 0

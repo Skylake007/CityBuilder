@@ -5,8 +5,8 @@ public class BinBeha : MonoBehaviour
 {
     protected virtual void Reset()
     {
-        this.LoadComponents();
         this.ResetValues();
+        this.LoadComponents();
     }
 
     protected virtual void Awake()
