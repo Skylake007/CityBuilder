@@ -62,11 +62,9 @@ public class BuildingTask : BinBeha
 			Vector3 aPos = a.transform.position;
 			Vector3 bPos = b.transform.position;
 			Vector3 currentPos = transform.position;
-
 			return Vector3.Distance(currentPos, aPos)
 			.CompareTo(Vector3.Distance(currentPos, bPos));
 		});
-
 		//Invoke("FindNearBuildings", 7f);
 	}
 }

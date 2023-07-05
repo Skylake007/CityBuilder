@@ -1,8 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class LogwoodGenerator : ResGenerator
+﻿public class LogwoodGenerator : ResGenerator
 {
     protected override void ResetValues()
     {

@@ -1,17 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AI;
 
 public class WorkerMovement : BinBeha
 {
 	public WorkerCtrl workerCtrl;
 	[SerializeField] protected Transform target;
-
 	public bool isWalking = false;
 	public bool isWorking = false;
 	public WorkingType workingType = WorkingType.chopTree;
-
 	[SerializeField] protected float walkLimit = 0.7f;
 	[SerializeField] protected float targetDistance = 0f;
 	protected override void LoadComponents()

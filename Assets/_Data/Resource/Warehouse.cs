@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -26,9 +25,8 @@ public class Warehouse : BinBeha
 		Transform res = transform.Find("Resource");
 		foreach (Transform resTran in res)
 		{
-			Debug.Log("Res tran: " + resTran);
+			Debug.Log("Res tran: " + resTran.name);
 			ResHolder resHolder = resTran.GetComponent<ResHolder>();
-
 			if (resHolder == null) continue;
 			this.resHolders.Add(resHolder);
 		}
@@ -64,6 +62,7 @@ public class Warehouse : BinBeha
 	public virtual ResHolder RemoveResource(ResourceName resourceName, float number)
 	{
 		ResHolder res = this.GetResource(resourceName);
+		if (res.Current() < number) return null;
 		res.Deduct(number);
 		return res;
 	}

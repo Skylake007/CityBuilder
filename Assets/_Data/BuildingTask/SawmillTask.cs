@@ -81,7 +81,7 @@ public class SawmillTask : BuildingTask
 
 		if (!workerCtrl.workerMovement.IsCloseToTarget()) return;
 
-		workerCtrl.workerMovement.SetTarget(null);
+		//workerCtrl.workerMovement.SetTarget(null);
 		workerCtrl.workerTasks.TaskCurrentDone();
 	}
 

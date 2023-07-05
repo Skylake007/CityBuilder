@@ -22,7 +22,6 @@ public class ConstructionManager : BinBeha
 
 	public virtual void AddConstruction(AbstractConstruction abstractConstruction)
 	{
-		//Debug.LogError(abstractConstruction);
 		this.constructions.Add(abstractConstruction);
 		abstractConstruction.transform.parent = transform;
 	}
@@ -30,6 +29,7 @@ public class ConstructionManager : BinBeha
 	protected virtual void ConstructionCleaning()
 	{
 		if (this.constructions.Count < 1) return;
+
 		AbstractConstruction abstractConstruction;
 		for (int i = 0; i < constructions.Count; i++)
 		{
@@ -45,6 +45,7 @@ public class ConstructionManager : BinBeha
 			if (construction.builder != null) continue;
 			if (!construction.HasEnoughtResource()) return construction;
 		}
+
 		return null;
 	}
 }

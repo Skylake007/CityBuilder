@@ -191,7 +191,6 @@ public class ForestHutTask : BuildingTask
 	{
 		if (workerCtrl.workerMovement.isWorking) return;
 		StartCoroutine(Chopping(workerCtrl, workerCtrl.workerTasks.taskTarget));
-		Debug.Log("ChopTree");
 	}
 
 	private IEnumerator Chopping(WorkerCtrl workerCtrl, Transform tree)
@@ -219,17 +218,6 @@ public class ForestHutTask : BuildingTask
 	{
 		yield return new WaitForSeconds(this.treeRemoveSpeed);
 		PrefabManager.instance.Destroy(tree);
-	}
-		
-	protected virtual TreeCtrl GetNearestTree()
-	{
-		foreach (GameObject tree in this.trees)
-		{
-			TreeCtrl treeCtrl = tree.GetComponent<TreeCtrl>();
-			if (treeCtrl.treeLevel.IsMaxLevel()) return treeCtrl;
-		}
-
-		return null;
 	}
 
 	protected virtual void FindTreeToChop(WorkerCtrl workerCtrl)

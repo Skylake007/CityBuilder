@@ -79,11 +79,17 @@ public class WorkerTasks : BinBeha
 	{
 		if (this.tasks.Count <= 0) return;
 		this.tasks.RemoveAt(this.tasks.Count - 1);
+		this.workerCtrl.workerMovement.SetTarget(null);
 	}
 
 	public virtual TaskType TaskCurrent()
 	{
 		if (this.tasks.Count <= 0) return TaskType.none;
 		return this.tasks[this.tasks.Count - 1];
+	}
+
+	public virtual void ClearAllTasks()
+	{
+		this.tasks.Clear();
 	}
 }

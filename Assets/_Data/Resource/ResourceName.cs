@@ -1,13 +1,9 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 
 public class ResNameParser
 {
 	public static ResourceName FromString(string name)
 	{
-		//Debug.Log("parser" + name);
 		//name = name.ToLower();
 		return (ResourceName)Enum.Parse(typeof(ResourceName), name);
 	}
@@ -15,7 +11,6 @@ public class ResNameParser
 
 public enum ResourceName
 {
-
 	noResource = 0,
 	//Money
 	gold = 1,

@@ -11,10 +11,10 @@ public class ResHolder : BinBeha
 
 	protected override void LoadComponents()
 	{
-		this.LoadResourceName();
+		this.LoadResName();
 	}
 
-	protected virtual void LoadResourceName()
+	protected virtual void LoadResName()
 	{
 		if (this.resName != ResourceName.noResource) return;
 
@@ -32,11 +32,12 @@ public class ResHolder : BinBeha
 	{
 		this.resCurrent += number;
 
-		if (this.resCurrent > this.resMax) this.resCurrent = this.resMax;
+		//if (this.resCurrent > this.resMax) this.resCurrent = this.resMax;
 		return this.resCurrent;
 	}
 	public virtual float Deduct(float number)
 	{
+		//TODO: fix issue less than 0 
 		return this.Add(-number);
 	}
 
@@ -54,7 +55,7 @@ public class ResHolder : BinBeha
 
 	public virtual bool IsMax()
 	{
-		return this.resCurrent == this.resMax;
+		return this.resCurrent >= this.resMax;
 	}
 
 	public virtual void SetLimit(int resLimit)

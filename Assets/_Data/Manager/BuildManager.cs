@@ -42,6 +42,8 @@ public class BuildManager : BinBeha
 		{
 			this.buildPrefabs.Add(child);
 		}
+
+		Debug.Log(transform.name + ": LoadBuildPrefabs", gameObject);
 	}
 
 	protected virtual void HideAllPrefabs()
@@ -74,12 +76,14 @@ public class BuildManager : BinBeha
 
 	public virtual void CurrentBuildClear()
 	{
+		this.currentBuild.gameObject.SetActive(false);
 		this.currentBuild = null;
 	}
 
 	protected virtual void ChoosePlaceToBuild()
 	{
 		if (this.currentBuild == null) return;
+
 		Ray ray = GodModeCtrl.instance._camera.ScreenPointToRay(Input.mousePosition);
 		//Diem cham giua con chuot va mat phang
 

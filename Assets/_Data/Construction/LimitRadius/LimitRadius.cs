@@ -42,11 +42,6 @@ public class LimitRadius : BinBeha
 		Debug.Log(transform.name + ": LoadRigibody", gameObject);
 	}
 
-	protected virtual void ResetColliderObjs()
-	{
-		this.colliderObjs.Clear();
-	}
-
 	public virtual bool IsCollided()
 	{
 		if (colliderObjs.Count < 1) return false;
@@ -117,8 +112,9 @@ public class LimitRadius : BinBeha
 		buildDestroyable.Destroy();
 	}
 
-	protected virtual void ResetColliderObjects()
+	protected virtual void ResetColliderObjs()
 	{
 		this.colliderObjs.Clear();
 	}
+
 }

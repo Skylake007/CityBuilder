@@ -40,6 +40,6 @@ public class MyLayerManager : BinBeha
         if (this.layerBuilding < 0) Debug.LogError("Layer Building is mising");
         if (this.layerTree < 0) Debug.LogError("Layer Tree is mising");
 
-        Debug.Log(transform.name + ": GetPlayers", gameObject);
+        //Debug.Log(transform.name + ": GetPlayers", gameObject);
     }
 }

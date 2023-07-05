@@ -104,7 +104,6 @@ public class AbstractConstruction : BinBeha
 		if (this.buildNames.Count > 0) return;
 		Regex regex  = new Regex(Regex.Escape("Build"));
 		string newText = regex.Replace(transform.name, "", 1);
-
 		this.buildNames.Add(newText);
 		Debug.Log(transform.name + ": LoadBuildNames", gameObject);
 	}

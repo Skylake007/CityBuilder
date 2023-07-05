@@ -9,7 +9,7 @@ public class ResGenerator : Warehouse
 	[SerializeField] protected List<Resource> resRequire;
 	public bool canCreate = true;
 	[SerializeField] protected float createTimer = 0f;
-	[SerializeField] protected float createDelay = 2f;
+	[SerializeField] protected float createDelay = 7f;
 
 	protected override void FixedUpdate()
 	{
@@ -50,6 +50,7 @@ public class ResGenerator : Warehouse
 	protected virtual bool IsRequireEnough()
 	{
 		if (this.resRequire.Count < 1) return true;
+
 		//to do this is not done yet
 		return false;
 	}

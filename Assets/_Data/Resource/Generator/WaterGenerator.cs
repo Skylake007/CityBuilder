@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Tree : ResGenerator
+public class WaterGenerator : ResGenerator
 {
 	protected override void LoadComponents()
 	{
@@ -13,19 +13,19 @@ public class Tree : ResGenerator
 
 	protected virtual void LoadResourceCreate()
 	{
-		Resource resource = new Resource
+		Resource res = new Resource
 		{
 			name = ResourceName.logwood,
 			number = 1
 		};
 
 		this.resCreate.Clear();
-		this.resCreate.Add(resource);
+		this.resCreate.Add(res);
 	}
 
 	protected virtual void SetLimit()
 	{
-		ResHolder resourceHolder = this.GetResource(ResourceName.logwood);
-		resourceHolder.SetLimit(1);
+		ResHolder resourceHolder = this.GetResource(ResourceName.water);
+		resourceHolder.SetLimit(7);
 	}
 }
