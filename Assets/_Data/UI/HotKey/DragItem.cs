@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 public class DragItem : BinBeha, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
-
+	[SerializeField] protected PressableAbility pressable;
 	[SerializeField] protected Image image;
 	[SerializeField] protected Transform realParent;
 	public virtual void SetRealParent(Transform realParent)
@@ -16,6 +16,7 @@ public class DragItem : BinBeha, IBeginDragHandler, IDragHandler, IEndDragHandle
 	{
 		base.LoadComponents();
 		this.LoadImage();
+		this.LoadBuildTypeName();
 	}
 
 	protected virtual void LoadImage()
@@ -23,6 +24,14 @@ public class DragItem : BinBeha, IBeginDragHandler, IDragHandler, IEndDragHandle
 		if (this.image != null) return;
 		this.image = GetComponent<Image>();
 		Debug.Log(transform.name + ": LoadImage", gameObject);
+	}
+
+	protected virtual void LoadBuildTypeName()
+	{
+		if (this.pressable != null) return;
+		this.pressable = GetComponentInChildren<PressableAbility>();
+		string buildName = pressable.GetBuildType();
+		Debug.Log(transform.name + ": LoadBuildName " + buildName, gameObject);
 	}
 
 	public void OnBeginDrag(PointerEventData eventData)
@@ -34,6 +43,9 @@ public class DragItem : BinBeha, IBeginDragHandler, IDragHandler, IEndDragHandle
 		transform.parent = UIHotKeyCtrl.Instance.transform;
 		//transform.parent = GodModeCtrl.Instance.MouseWorldPosition;
 		this.image.raycastTarget = false;
+
+		BuildManager.instance.CurrentBuildSet(this.pressable.GetBuildType());
+
 	}
 
 	public void OnDrag(PointerEventData eventData)
@@ -52,5 +64,6 @@ public class DragItem : BinBeha, IBeginDragHandler, IDragHandler, IEndDragHandle
 		Debug.Log("On end drag");
 		transform.parent = this.realParent;
 		this.image.raycastTarget = true;
+		//BuildManager.instance.CurrentBuildClear();
 	}
 }
