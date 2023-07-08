@@ -18,8 +18,10 @@ public class InputHotKeyManager : MonoBehaviour
     public bool isAlphaX = false; //Destroy
     public bool isAlphaZ = false; //Unchecked 1
     public bool isAlphaC = false; //SwtichCamera
+    public bool isAlphaLeftAlt = false; //ShowMousePoiter
     public bool isAlphaESC = false; //Unchecked 2
 
+    public bool isHidenPointer = true;
 
     void Awake()
     {
@@ -30,6 +32,7 @@ public class InputHotKeyManager : MonoBehaviour
     private void Update()
     {
         this.GetHotKeyPress();
+        this.HidenPointer();
     }
 
     protected virtual void GetHotKeyPress()
@@ -45,5 +48,19 @@ public class InputHotKeyManager : MonoBehaviour
         this.isAlphaZ = Input.GetKeyDown(KeyCode.Z);
         this.isAlphaX = Input.GetKeyDown(KeyCode.X);
         this.isAlphaESC = Input.GetKeyDown(KeyCode.Escape);
+        this.isAlphaLeftAlt = Input.GetKey(KeyCode.LeftAlt);
+    }
+
+    protected virtual void HidenPointer()
+    {
+        if (isHidenPointer)
+        {
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
+        }
+        else
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+        }
     }
 }

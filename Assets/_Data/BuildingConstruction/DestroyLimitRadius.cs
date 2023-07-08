@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LimitRadiusDestroy : LimitRadius
+public class DestroyLimitRadius : LimitRadius
 {
 	protected override void ResetValues()
 	{
@@ -24,3 +24,5 @@ public class LimitRadiusDestroy : LimitRadius
 		return false;
 	}
 }
+
+

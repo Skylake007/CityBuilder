@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class OnPressAlpha : UIHotKeyAbstract
 {
-	protected override void Update()
+
+    protected override void Update()
 	{
         this.CheckAlphaIsPress();
 	}
@@ -37,6 +38,15 @@ public class OnPressAlpha : UIHotKeyAbstract
         { 
             //Switch camera
             Debug.Log("Switch camera");
+            CameraManager.Instance.SwitchCamera();
+        }
+
+        if (InputHotKeyManager.Instance.isAlphaLeftAlt)
+        {
+            InputHotKeyManager.Instance.isHidenPointer = true;
+        }   
+        else {
+            InputHotKeyManager.Instance.isHidenPointer = false;
         }
     }
 

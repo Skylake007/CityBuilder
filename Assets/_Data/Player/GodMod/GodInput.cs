@@ -26,9 +26,10 @@ public class GodInput : BinBeha
         this.InputHandle();
         this.MouseRotation();
         this.ChoosePlaceToBuild();
+        this.ShowMousePointer();
     }
 
-    protected override void LoadComponents()
+	protected override void LoadComponents()
     {
         base.LoadComponents();
         this.LoadGetModeCtrl();
@@ -39,6 +40,12 @@ public class GodInput : BinBeha
         if (this.godModeCtrl != null) return;
         this.godModeCtrl = GetComponent<GodModeCtrl>();
         Debug.Log(transform.name + ": LoadGetModeCtrl", gameObject);
+    }
+
+    protected virtual void ShowMousePointer()
+    {
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
     }
 
     protected virtual void InputHandle()

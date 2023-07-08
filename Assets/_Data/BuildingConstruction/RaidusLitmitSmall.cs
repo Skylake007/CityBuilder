@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LimitRadiusSmall : LimitRadius
+public class RadiusLimitSmall : LimitRadius
 {
 	protected override void ResetValues()
 	{

@@ -6,8 +6,10 @@ public class PrefabManager : BinBeha
 {
     public static PrefabManager instance;
     [SerializeField] protected List<Transform> prefabs;
+    [SerializeField] protected int currentCameraIndex = 0;
 
-	protected override void Awake()
+
+    protected override void Awake()
 	{
 		base.Awake();
         if (PrefabManager.instance != null) Debug.LogWarning("Only 1 PrefabManager allow to exist");
