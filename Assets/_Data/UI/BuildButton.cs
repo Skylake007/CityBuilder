@@ -13,5 +13,6 @@ public class BuildButton : MonoBehaviour
 	public virtual void BuildClear()
 	{
 		BuildManager.instance.CurrentBuildClear();
+
 	}
 }

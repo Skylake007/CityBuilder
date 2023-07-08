@@ -56,6 +56,7 @@ public class BuildingTask : BinBeha
 
 	public virtual void FindNearByBuildings()
 	{
+		this.nearBuildings.Clear();
 		this.nearBuildings = new List<BuildingCtrl>(BuildingManager.instance.BuildingCtrls());
 		this.nearBuildings.Sort(delegate (BuildingCtrl a, BuildingCtrl b)
 		{

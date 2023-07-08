@@ -38,14 +38,12 @@ public class WarehouseTask : BuildingTask
             case TaskType.takingProductBack:
                 this.BringResourceBack(workerCtrl);
                 break;
-
             case TaskType.findBuildingNeedMaterial:
                 this.FindBuildingNeedMaterial(workerCtrl);
                 break;
             case TaskType.bringMaterialToBuilding:
                 this.BringMaterialToBuilding(workerCtrl);
                 break;
-
             case TaskType.goToWorkStation:
                 this.GoToWorkStation(workerCtrl);
                 break;

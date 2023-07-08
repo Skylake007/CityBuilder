@@ -2,14 +2,26 @@ using UnityEngine;
 
 public class GodInput : BinBeha
 {
+    private static GodInput instance;
+    public static GodInput Instance => instance;
+
     public GodModeCtrl godModeCtrl;
+
     public bool isMouseRotating = false;
-    public float rotationSpeed = 0.5f;
+	private bool isEditBottomBar = false;
+	public float rotationSpeed = 0.5f;
     public Vector2 mouseScroll = new Vector2();
     public Vector3 mouseReference = new Vector3();
     public Vector3 mouseRotation = new Vector3();
 
-    protected override void Update()
+	protected override void Awake()
+	{
+		base.Awake();
+        if (GodInput.instance != null) Debug.LogError("Only 1 GodInput allow to exist. ");
+        GodInput.instance = this;
+	}
+
+	protected override void Update()
     {
         this.InputHandle();
         this.MouseRotation();
@@ -42,8 +54,20 @@ public class GodInput : BinBeha
         this.godModeCtrl.godMovement.speedShift = leftShift;
     }
 
+    public virtual void EnableMouseRotation()
+    {
+        this.isEditBottomBar = false;
+    }
+
+    public virtual void DisableMouseRotation()
+    {
+        this.isEditBottomBar = true;
+    }
+
     protected virtual void MouseRotation()
     {
+        if (isEditBottomBar) return;
+
         this.isMouseRotating = Input.GetKey(KeyCode.Mouse0);
         if (Input.GetKeyDown(KeyCode.Mouse0)) this.mouseReference = Input.mousePosition;
 
@@ -68,5 +92,4 @@ public class GodInput : BinBeha
         if (!Input.GetKeyUp(KeyCode.Mouse0)) return;
         BuildManager.instance.CurrentBuildPlace();
     }
-
 }

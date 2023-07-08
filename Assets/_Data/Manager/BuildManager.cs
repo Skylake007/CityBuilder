@@ -76,6 +76,7 @@ public class BuildManager : BinBeha
 
 	public virtual void CurrentBuildClear()
 	{
+		if (currentBuild == null) return;
 		this.currentBuild.gameObject.SetActive(false);
 		this.currentBuild = null;
 	}
@@ -84,7 +85,7 @@ public class BuildManager : BinBeha
 	{
 		if (this.currentBuild == null) return;
 
-		Ray ray = GodModeCtrl.instance._camera.ScreenPointToRay(Input.mousePosition);
+		Ray ray = GodModeCtrl.Instance._camera.ScreenPointToRay(Input.mousePosition);
 		//Diem cham giua con chuot va mat phang
 
 		int mask = (1 << MyLayerManager.instance.layerGround);
@@ -129,7 +130,7 @@ public class BuildManager : BinBeha
 		if (this.currentBuild == null) return;
 		{
 			Gizmos.color = Color.blue;
-			Gizmos.DrawLine(GodModeCtrl.instance._camera.transform.position, this.buildPos);
+			Gizmos.DrawLine(GodModeCtrl.Instance._camera.transform.position, this.buildPos);
 		}
 	}
 }

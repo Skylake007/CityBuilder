@@ -2,7 +2,12 @@ using UnityEngine;
 
 public class GodModeCtrl : BinBeha
 {
-    public static GodModeCtrl instance;
+    private static GodModeCtrl instance;
+    public static GodModeCtrl Instance => instance;
+
+    [SerializeField] protected Vector3 mouseWorldPosition;
+    public Vector3 MouseWorldPosition => mouseWorldPosition;
+
 
     [Header("God Mode")]
     public Camera _camera;
