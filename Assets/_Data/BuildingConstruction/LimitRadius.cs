@@ -39,6 +39,7 @@ public class LimitRadius : BinBeha
 		if (this._rigidbody != null) return;
 		this._rigidbody = GetComponent<Rigidbody>();
 		this._rigidbody.useGravity = false;
+		this._rigidbody.isKinematic = true;
 		Debug.Log(transform.name + ": LoadRigibody", gameObject);
 	}
 

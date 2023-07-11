@@ -168,30 +168,38 @@ GameObject:
   - component: {fileID: 8025129761938865177}
   - component: {fileID: 2146258111439368745}
   - component: {fileID: 4493195563531541978}
-  m_Layer: 0
+  - component: {fileID: 6184987041564724702}
+  - component: {fileID: 1107972452231526152}
+  - component: {fileID: 1319269181731471816}
+  m_Layer: 6
   m_Name: WoodCutter
   m_TagString: Untagged
-  m_Icon: {fileID: 8418204508859773708, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &605895145223104982
-Transform:
+--- !u!224 &605895145223104982
+RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2237924620720955493}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.390357, y: -0.49280024, z: 13.860757}
+  m_LocalPosition: {x: 0, y: 0, z: -46.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 219646167536734680}
   - {fileID: 5743031790950608306}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 2.08, y: -0.174}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!195 &2209468687398005955
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -233,6 +241,7 @@ MonoBehaviour:
   workerModel: {fileID: 219646167536734680}
   navMeshAgent: {fileID: 2209468687398005955}
   resCarrier: {fileID: 4493195563531541978}
+  image: {fileID: 0}
 --- !u!114 &8000376906715016024
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -303,6 +312,67 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   carryCount: 5
   resources: []
+--- !u!222 &6184987041564724702
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2237924620720955493}
+  m_CullTransparentMesh: 1
+--- !u!114 &1107972452231526152
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2237924620720955493}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: b0aedf34e7d4a964892816740a40a563, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!136 &1319269181731471816
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2237924620720955493}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Height: 2.689248
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.84462404, z: 0}
 --- !u!1 &4965203273204172035
 GameObject:
   m_ObjectHideFlags: 0
@@ -435,6 +505,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -4601992614122945897, guid: bc83302d733e3da4ea61bd8c1626c8d7, type: 3}
+      propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: bc83302d733e3da4ea61bd8c1626c8d7, type: 3}
       propertyPath: m_Name
       value: Kachujin G Rosales@Standing Melee Combo Attack Ver. 3
@@ -451,7 +525,7 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 1852576806548013000, guid: bc83302d733e3da4ea61bd8c1626c8d7, type: 3}
-      insertIndex: -1
+      insertIndex: 0
       addedObject: {fileID: 1214636347034191794}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bc83302d733e3da4ea61bd8c1626c8d7, type: 3}

@@ -11,9 +11,9 @@ public class AbstractConstruction : BinBeha
 	[SerializeField] protected float percent = 0f;
     [SerializeField] protected float timer = 0f;
     [SerializeField] protected float delay = 0.05f;
-    [SerializeField] protected List<string> buildNames;
-	[SerializeField] protected List<Resource> resRequires;
-	[SerializeField] protected List<Resource> resHave;
+    [SerializeField] public List<string> buildNames;
+	[SerializeField] public List<Resource> resRequires;
+	[SerializeField] public List<Resource> resHave;
 
 	protected override void FixedUpdate()
 	{

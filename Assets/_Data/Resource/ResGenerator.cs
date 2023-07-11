@@ -8,8 +8,10 @@ public class ResGenerator : Warehouse
 	[SerializeField] protected List<Resource> resCreate;
 	[SerializeField] protected List<Resource> resRequire;
 	public bool canCreate = true;
+
+	[SerializeField] public float percentNextLevel = 0f;
 	[SerializeField] protected float createTimer = 0f;
-	[SerializeField] protected float createDelay = 7f;
+	[SerializeField] protected float createDelay = 60f;
 
 	protected override void FixedUpdate()
 	{
@@ -21,7 +23,9 @@ public class ResGenerator : Warehouse
 		if (!this.canCreate) return;
 
 		this.createTimer += Time.fixedDeltaTime;
+		this.percentNextLevel = createTimer / createDelay * 100;
 		if (this.createTimer < this.createDelay) return;
+		this.percentNextLevel = 0;
 		this.createTimer = 0;
 
 		if (!this.IsRequireEnough()) return;

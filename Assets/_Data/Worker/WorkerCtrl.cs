@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 
 public class WorkerCtrl : BinBeha
 {
@@ -10,6 +11,7 @@ public class WorkerCtrl : BinBeha
 	public Transform workerModel; 
 	public NavMeshAgent navMeshAgent;
 	public ResCarrier resCarrier;
+	public Image image;
 
 	protected override void LoadComponents()
 	{
@@ -20,7 +22,9 @@ public class WorkerCtrl : BinBeha
 		this.LoadWorkerTasks();
 		this.LoadAgent();
 		this.LoadResCarrier();
+		this.LoadImgIns();
 	}
+
 	protected virtual void LoadWorkerTasks()
 	{
 		if (this.workerTasks != null) return;
@@ -73,5 +77,11 @@ public class WorkerCtrl : BinBeha
 		this.workerTasks.readyForTask = false;
 		this.workerTasks.taskWorking.GoOutBuilding();
 		this.workerBuildings.WorkerReleased();
+	}
+	protected virtual void LoadImgIns()
+	{
+		if (this.image != null) return;
+		this.image = GetComponent<Image>();
+		Debug.Log(transform.name + ": LoadImage", gameObject);
 	}
 }

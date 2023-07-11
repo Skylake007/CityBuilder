@@ -3,7 +3,7 @@
     protected override void ResetValues()
     {
         base.ResetValues();
-        this.createDelay = 60f;
+        this.createDelay = 120f;
     }
 
     protected override void LoadComponents()

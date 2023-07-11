@@ -7,7 +7,6 @@ public class Workers : BinBeha
 	[SerializeField] protected int maxWorker = 1;
 	[SerializeField] protected List<WorkerCtrl> workers;
 
-	
 	public virtual bool IsNeedWorker()
 	{
 		if (this.workers.Count >= this.maxWorker) return false;
@@ -27,5 +26,10 @@ public class Workers : BinBeha
 		}
 
 		this.workers.Clear();
+	}
+
+	public virtual List<WorkerCtrl> GetCurrentWorker()
+	{
+		return this.workers;
 	}
 }

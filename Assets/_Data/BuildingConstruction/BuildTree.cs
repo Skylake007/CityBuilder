@@ -10,6 +10,8 @@ public class BuildTree : AbstractConstruction
 		this.buildNames.Add("Tree_1");
 		this.buildNames.Add("Tree_2");
 		this.buildNames.Add("Tree_3");
+		this.buildNames.Add("Tree_4");
+		this.buildNames.Add("Tree_5");
 		Debug.Log(transform.name + " LoadBuildNames", gameObject);
 	}
 

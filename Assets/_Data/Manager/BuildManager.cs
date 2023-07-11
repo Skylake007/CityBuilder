@@ -10,6 +10,14 @@ public class BuildManager : BinBeha
 	[SerializeField] protected Transform currentBuild;
 	[SerializeField] protected List<Transform> buildPrefabs;
 
+	private BuildingCtrl buildingCtrl;
+	private WorkerCtrl workerCtrl;
+	private ConstructionCtrl constructionCtrl;
+	private TreeCtrl treeCtrl;
+
+	[SerializeField] protected float timer = 0f;
+	[SerializeField] protected float timerClear = 5;
+
 	protected override void Awake()
 	{
 		base.Awake();
@@ -21,6 +29,16 @@ public class BuildManager : BinBeha
 	{
 		base.FixedUpdate();
 		this.ChoosePlaceToBuild();
+		this.UpdateWorkerIns();
+		this.UpdateConstructionIns();
+		this.UpdateBuildingIns();
+		this.UpdateTreeIns();
+
+		this.timer += Time.fixedDeltaTime;
+		if (this.timer < this.timerClear) return;
+		this.ClearVar();
+		this.timer = 0;
+
 	}
 
 	protected override void Start()
@@ -83,17 +101,126 @@ public class BuildManager : BinBeha
 
 	protected virtual void ChoosePlaceToBuild()
 	{
-		if (this.currentBuild == null) return;
-
 		Ray ray = GodModeCtrl.Instance._camera.ScreenPointToRay(Input.mousePosition);
-		//Diem cham giua con chuot va mat phang
+		int maskBuilding = (1 << MyLayerManager.instance.layerBuilding);
+		int maskGround = (1 << MyLayerManager.instance.layerGround);
+		int maskWorker = (1 << MyLayerManager.instance.layerWorker);
+		int maskTree = (1 << MyLayerManager.instance.layerTree);
 
-		int mask = (1 << MyLayerManager.instance.layerGround);
-		if (Physics.Raycast(ray, out RaycastHit hit, 999, mask))
+
+		//TODO: Make is shorter
+
+		if (Physics.Raycast(ray, out RaycastHit hitBuilding, 999, maskBuilding) && Input.GetMouseButtonDown(0))
 		{
-			this.buildPos = hit.point;
-			this.currentBuild.position = this.buildPos;
+			GameObject gameObject = hitBuilding.collider.gameObject;
+			Debug.Log("Raycast building" + gameObject.name);
+			Component[] components = gameObject.GetComponents<Component>();
+
+			foreach (Component component in components)
+			{
+				BuildingCtrl buildingCtrl = component.GetComponent<BuildingCtrl>();
+				ConstructionCtrl constructionCtrl = component.GetComponent<ConstructionCtrl>();
+
+				if (buildingCtrl != null)
+				{
+					this.timer = 0f;
+					this.workerCtrl = null;
+					this.constructionCtrl = null;
+					this.buildingCtrl = buildingCtrl;
+					this.treeCtrl = null;
+				}
+
+				if (constructionCtrl != null)
+				{
+					this.timer = 0f;
+					this.workerCtrl = null;
+					this.constructionCtrl = constructionCtrl;
+					this.buildingCtrl = null;
+					this.treeCtrl = null;
+				}
+			}
+			return;
 		}
+		else if (Physics.Raycast(ray, out RaycastHit hitWorker, 999, maskWorker) && Input.GetMouseButtonDown(0))
+		{
+			GameObject gameObject = hitWorker.collider.gameObject;
+			Debug.Log("Raycast worker" + gameObject.name);
+			Component[] components = gameObject.GetComponents<Component>();
+
+			foreach (Component component in components)
+			{
+				WorkerCtrl workerCtrl = component.GetComponent<WorkerCtrl>();
+				if (workerCtrl != null)
+				{
+					this.timer = 0f;
+					this.workerCtrl = workerCtrl;
+					this.constructionCtrl = null;
+					this.buildingCtrl = null;
+					this.treeCtrl = null;
+				}
+			}
+			return;
+		}
+		else if (Physics.Raycast(ray, out RaycastHit hitTree, 999, maskTree) && Input.GetMouseButtonDown(0))
+		{
+			GameObject gameObject = hitTree.collider.gameObject;
+			Debug.Log("Raycast worker" + gameObject.name);
+			Component[] components = gameObject.GetComponents<TreeCtrl>();
+
+			foreach (Component component in components)
+			{
+				TreeCtrl treeCtrl = component.GetComponent<TreeCtrl>();
+				if (treeCtrl != null)
+				{
+					this.timer = 0f;
+					this.workerCtrl = null;
+					this.constructionCtrl = null;
+					this.buildingCtrl = null;
+					this.treeCtrl = treeCtrl;
+				}
+			}
+			return;
+		}
+
+		else if (Physics.Raycast(ray, out RaycastHit hitGround, 999, maskGround) && this.currentBuild != null)
+		{
+			this.buildPos = hitGround.point;
+			this.currentBuild.position = this.buildPos;
+			return;
+		}
+	}
+
+	private void UpdateWorkerIns()
+	{
+		if (this.workerCtrl == null) return;
+		UIPopupInspectorManager.Instance.ShowItems(workerCtrl);
+	}
+
+	private void UpdateConstructionIns()
+	{
+		if (this.constructionCtrl == null) return;
+		UIPopupInspectorManager.Instance.ShowItems(constructionCtrl);
+	}
+
+	private void UpdateBuildingIns()
+	{
+		if (this.buildingCtrl == null) return;
+		UIPopupInspectorManager.Instance.ShowItems(buildingCtrl);
+	}
+
+	private void UpdateTreeIns()
+	{
+		if (this.treeCtrl == null) return;
+		UIPopupInspectorManager.Instance.ShowItems(treeCtrl);
+	}
+
+	protected virtual void ClearVar()
+	{
+		this.workerCtrl = null;
+		this.constructionCtrl = null;
+		this.buildingCtrl = null;
+		this.treeCtrl = null;
+		UIPopupInspectorManager.Instance.Close();
 	}
 
 	public virtual void CurrentBuildPlace()

@@ -11,7 +11,7 @@ public class WorkerTasks : BinBeha
 	public TaskGoHome taskGoHome;
 	public Transform taskTarget;
 	public BuildingCtrl taskBuildingCtrl;
-	[SerializeField] protected List<TaskType> tasks;
+	[SerializeField] public List<TaskType> tasks;
 
 	protected override void Awake()
 	{

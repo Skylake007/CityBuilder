@@ -85,4 +85,9 @@ public class Warehouse : BinBeha
 	{
 		return new List<Resource>(); //Do not return null
 	}
+
+	public virtual List<ResHolder> GetResStorage()
+	{
+		return this.resHolders;
+	}
 }

@@ -5,7 +5,7 @@ using UnityEngine;
 public class BuildLevel : BinBeha
 {
 	[SerializeField] protected List<Transform> levels;
-	[SerializeField] protected int currentLevel = 0;
+	[SerializeField] public int currentLevel = 0;
 
 	protected override void OnEnable()
 	{

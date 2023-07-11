@@ -82,12 +82,13 @@ public class HouseBuilderTask : BuildingTask
 
         ResourceName resRequireName = this.construction.GetResRequireName();
         ResHolder resHolder = warehouseCtrl.warehouse.GetResource(resRequireName);
-        if (resHolder.Current() < 1) //Note not relace with multi workers
+        if (resHolder.Current() < 1)//Note: not relace with multi workers
         {
             workerCtrl.workerTasks.TaskCurrentDone();
             workerCtrl.workerTasks.TaskAdd(TaskType.findWarehouseHasRes);
             return;
         }
+
 
         WorkerTasks workerTasks = workerCtrl.workerTasks;
         if (workerTasks.inHouse) workerTasks.taskWorking.GoOutBuilding();
